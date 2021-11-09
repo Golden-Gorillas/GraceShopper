@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 const dummyData =[
   {
-    cardId: 1,
+    id: 1,
     name: "dummyCHARIZARD - 4/102 - HOLO RARE (CLASSIC COLLECTION)",
     price: 160.00,
     description: "this card is in mint condition and very rare",
@@ -13,7 +13,7 @@ const dummyData =[
     type: "fire",
   },
   {
-    cardId: 2,
+    id: 2,
     name: "dummyBLASTOISE - 2/102 - HOLO RARE (CLASSIC COLLECTION)",
     price: 20.00,
     description: "this card is in good condition and rare",
@@ -23,7 +23,7 @@ const dummyData =[
     type: "water",
   },
   {
-    cardId: 3,
+    id: 3,
     name: "dummyCLAYDOL - 15/106 - HOLO RARE (CLASSIC COLLECTION)",
     price: 20.00,
     description: "this card is in good condition and rare",
@@ -53,7 +53,7 @@ export const Home = props => {
         </div>
         <div className="cardsContainer">
         {cards.map((card) => (
-          <div className= "cards" key = {card.cardId}>
+          <div className= "cards" key = {card.id}>
             <img src= {card.imageUrl}/>
             <h6>{card.name}</h6>
             <p>${card.price}</p>
