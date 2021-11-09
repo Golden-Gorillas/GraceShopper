@@ -23,6 +23,55 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: 25%;
+  padding-bottom: 25%; /* Same as width, sets height */
+  margin-bottom: 2%; /* (100-32*3)/2 */
+  position: relative;
+}
+
+.banner {
+  color: white;
+  background: url('http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg') top left/cover no-repeat;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexWrapper {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bannerText {
+
+}
+
+h1 { font-size: 60px; }
+/* h3 {
+  font-size: 32px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+h6 { font-size: 22px; } */
+
+.banner h1 {
+  margin: 0;
+  text-shadow: 2px 2px 6px #000;
+  text-align: center;
+}
+
 .singlecontainer{
   background-color: burlywood;
   border-radius: 5% 10%;
