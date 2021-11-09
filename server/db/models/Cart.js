@@ -1,13 +1,10 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Carts = db.define('carts', {
-	cartsId: {
-		type: Sequelize.INTEGER,
-	},
-	cards: {
+const Cart = db.define('cart', {
+	items: {
 		type: Sequelize.ARRAY(Sequelize.INTEGER),
 	},
 });
 
-module.exports = Carts;
+module.exports = Cart;
