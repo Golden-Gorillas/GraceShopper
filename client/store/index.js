@@ -3,8 +3,15 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
-
-const reducer = combineReducers({ auth })
+import cardsReducer from './pokemoncards'
+import cardReducer from './pokemoncard'
+//auth,
+const reducer = combineReducers(
+  { auth,
+    cardsReducer,
+    cardReducer
+ 
+  })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

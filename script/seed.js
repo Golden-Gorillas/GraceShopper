@@ -23,10 +23,15 @@ async function seed() {
 		userEmail: 'lydia@gmail.com',
 		password: '123',
 	});
-	const cj = await User.create({ userEmail: 'cj@gmail.com', password: '123' });
+	const cj = await User.create({
+		userEmail: 'cj@gmail.com',
+		password: '123',
+		role: 'admin',
+	});
 	const violet = await User.create({
 		userEmail: 'violet@gmail.com',
 		password: '123',
+		role: 'admin',
 	});
 
 	const cards = await Promise.all([

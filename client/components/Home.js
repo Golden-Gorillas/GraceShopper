@@ -1,5 +1,5 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
 const dummyData =[
   {
@@ -67,14 +67,23 @@ export const Home = props => {
 
 
 }
+export const Home = (props) => {
+	const { userEmail } = props;
+
+	return (
+		<div>
+			<h3>Welcome, {userEmail}</h3>
+		</div>
+	);
+};
 
 /**
  * CONTAINER
  */
-const mapState = state => {
-  return {
-    username: state.auth.username
-  }
-}
+const mapState = (state) => {
+	return {
+		userEmail: state.auth.userEmail,
+	};
+};
 
-export default connect(mapState)(Home)
+export default connect(mapState)(Home);

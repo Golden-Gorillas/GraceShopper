@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
-import {me} from './store'
+import { PokemonCards } from './components/PokemonCardInventroy';
+import SingleCardView from './components/singleCardView';
+import { me } from './store'
 
 /**
  * COMPONENT
@@ -14,11 +16,19 @@ class Routes extends Component {
   // }
 
   render() {
-    // const {isLoggedIn} = this.props
+    //const {isLoggedIn} = this.props
 
     return (
       <div>
-            <Route path="/" component={Home} />
+        (
+          <Switch>
+            <Route exact path='/' component={ Login } />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/cards" component={PokemonCards}/>
+            <Route exact path="/cards/:id" component={SingleCardView}/>
+          </Switch>
+        )
       </div>
     )
   }
