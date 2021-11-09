@@ -21,6 +21,16 @@ const dummyData =[
     inStock: true,
     rarity: "rare",
     type: "water",
+  },
+  {
+    cardId: 3,
+    name: "dummyCLAYDOL - 15/106 - HOLO RARE (CLASSIC COLLECTION)",
+    price: 20.00,
+    description: "this card is in good condition and rare",
+    imageUrl: "https://cdn.shopify.com/s/files/1/1704/1809/products/41_829ce7ed-5f8d-48b5-851d-531c7d4da22f_325x.jpg?v=1633532856",
+    inStock: true,
+    rarity: "rare",
+    type: "water",
   }
 ]
 /**
@@ -33,14 +43,17 @@ export const Home = props => {
     const cards = dummyData
     return (
       <div>
-        hello World
-      <div/>
-        <div>
-          <img className = "banner" src="http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg"/>
+        <div className="banner">
+      <div className= "bannerText">
+        <h1>Golden Gorillas</h1>
+        <h1>Pokemon Card Store</h1>
+      </div>
+          {/* <img className="banner" src="http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg"/> */}
+
         </div>
-        <div>
+        <div className="cardsContainer">
         {cards.map((card) => (
-          <div className= "cardCard" key = {card.cardId}>
+          <div className= "cards" key = {card.cardId}>
             <img src= {card.imageUrl}/>
             <h6>{card.name}</h6>
             <p>${card.price}</p>
