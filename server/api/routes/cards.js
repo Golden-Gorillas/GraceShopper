@@ -13,4 +13,15 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const card = await Card.findOne({
+      where: { id: req.params.id },
+    });
+    res.send(card);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
