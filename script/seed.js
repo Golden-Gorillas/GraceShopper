@@ -61,8 +61,8 @@ async function seed() {
       description: '',
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/170938.jpg',
-      type: 'fire',
-      rarity: 'Dragon',
+      type: 'Dragon',
+      rarity: 'legendary',
     }),
     Card.create({
       name: 'Charizard',
@@ -96,7 +96,7 @@ async function seed() {
 
   for (let i = 0; i <= 50; i++) {
     const pokemonApiCard = await pokemon.card.find(
-      `base1-${Math.floor(Math.ceil() * 102)}`
+      `base1-${Math.ceil(Math.random() * 102)}`
     );
 
     await Card.create({
