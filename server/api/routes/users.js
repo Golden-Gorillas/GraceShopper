@@ -58,7 +58,7 @@ router.put('/:id', requireToken, async (req, res, next) => {
   }
 });
 
-router.put('/:id', requireToken, async (req, res, next) => {
+router.delete('/:id', requireToken, async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: { id: req.params.id },
