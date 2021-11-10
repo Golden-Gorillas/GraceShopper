@@ -8,6 +8,7 @@ import pokemonCards from './components/pokemonCardInventory';
 import { me } from './store';
 import { fetchCards } from './store/pokemoncards';
 
+
 /**
  * COMPONENT
  */
@@ -23,7 +24,7 @@ class Routes extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/cards" component={pokemonCards} />
