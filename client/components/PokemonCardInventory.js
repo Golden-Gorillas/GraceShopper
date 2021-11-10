@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'
 import { fetchCards } from '../store/pokemoncards';
-import axios from 'axios';
+
 
 // if we have issues check props :)
 
@@ -22,12 +22,12 @@ export class PokemonCards extends Component {
 				<h1>card list</h1>
 				<div className='cardsContainer'>
 					{cards.map((card) => (
-						<div className='singleContainer' key={card.id}>
+						<div className='singleRowContainer' key={card.id}>
 							<div>
 								<Link to={`/cards/${card.id}`} ><h1>{card.name}</h1></Link>
 							</div>	
-							<p>{card.price}</p>
-							<img src={card.imageUrl} />
+							<p className="price">{card.price}</p>
+							<img className="card" src={card.imageUrl} />
 						</div>
 					))}
 				</div>

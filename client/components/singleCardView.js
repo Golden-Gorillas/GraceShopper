@@ -25,12 +25,12 @@ class SingleCardView extends Component{
         this.props.getCard(this.props.match.params.id)
     }
     render(){
-        const {name,price,description,imageUrl,inStock,rarity} = this.props.card
+        const {name,price,description,imageUrl,stock,rarity} = this.props.card
         return (
             <div className="singlecontainer">
                 <div className="singlecardTitle">
                     <h1>{name}</h1>
-                    <h5 id="stock">{inStock ? 'InStock': 'Not Avalible'}</h5>
+                    <h5 id="stock">{stock>0 ? 'InStock': 'Not Avalible'}</h5>
                 </div>
                 <div className="onepokemoncard">
                     <div className="cardpic">
