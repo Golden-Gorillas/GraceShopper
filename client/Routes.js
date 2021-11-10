@@ -1,36 +1,36 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
-import { PokemonCards } from './components/PokemonCardInventroy';
 import SingleCardView from './components/singleCardView';
-import { me } from './store'
+import pokemonCards from './components/pokemonCardInventory';
+import { me } from './store';
+import { fetchCards } from './store/pokemoncards';
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  // componentDidMount() {
-  //   this.props.loadInitialData()
-  // }
+  async componentDidMount() {
+    await this.props.fetchCardsFromServer();
+    console.log(this.props);
+  }
 
   render() {
     //const {isLoggedIn} = this.props
 
     return (
       <div>
-        (
-          <Switch>
-            <Route exact path='/' component={ Login } />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/cards" component={PokemonCards}/>
-            <Route exact path="/cards/:id" component={SingleCardView}/>
-          </Switch>
-        )
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/cards" component={pokemonCards} />
+          <Route exact path="/cards/:id" component={SingleCardView} />
+        </Switch>
       </div>
-    )
+    );
   }
 }
 
@@ -46,4 +46,16 @@ class Routes extends Component {
 // }
 
 //
-export default Routes;
+const mapState = (state) => {
+  return {
+    cards: state.cards,
+  };
+};
+
+const mapDispatch = (dispatch, { history }) => {
+  return {
+    fetchCardsFromServer: () => dispatch(fetchCards()),
+  };
+};
+
+export default connect(mapState, mapDispatch)(Routes);

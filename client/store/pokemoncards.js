@@ -1,35 +1,27 @@
-import axios from 'axios'
+import axios from 'axios';
 //action
-const SET_CARDS = 'SET_CARDS'
+const SET_CARDS = 'SET_CARDS';
 
 export const setCards = (cards) => {
-    return{
+  return {
     type: SET_CARDS,
-    cards }
-}
+    cards,
+  };
+};
 //thunk
 export const fetchCards = () => {
-    return async (dispatch) => {
-        try{
-            const { data} = await axios.get('/api/cards')
-            console.log("THUNK: ",data)
-            dispatch(setCards(data))
+  return async (dispatch) => {
+    const { data } = await axios.get('/api/cards');
+    dispatch(setCards(data));
+  };
+};
 
-        }catch(err){
-            throw(err)
-        }
-    }
-}
 //reduce
-
-
-const cardsReducer=(state = [], action) => {
-    switch(action.type){
-        case SET_CARDS:
-            return action.cards
-        default:
-            return state
-    }
+export default function cardsReducer(state = [], action) {
+  switch (action.type) {
+    case SET_CARDS:
+      return action.cards;
+    default:
+      return state;
+  }
 }
-
-export default cardsReducer
