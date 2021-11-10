@@ -6,6 +6,8 @@ import Home from './components/Home';
 import PokemonCards from './components/PokemonCardInventory';
 import SingleCardView from './components/singleCardView';
 import { me } from './store';
+
+
 /**
  * COMPONENT
  */
@@ -14,19 +16,20 @@ class Routes extends Component {
 		this.props.loadInitialData();
 	}
 
-	render() {
-		return (
-			<div>
-				<Switch>
-					<Route exact path='/' component={Login} />
-					<Route exact path='/login' component={Login} />
-					<Route exact path='/signup' component={Signup} />
-					<Route exact path='/cards' component={PokemonCards} />
-					<Route exact path='/cards/:id' component={SingleCardView} />
-				</Switch>
-			</div>
-		);
-	}
+
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/cards" component={pokemonCards} />
+          <Route exact path="/cards/:id" component={SingleCardView} />
+        </Switch>
+      </div>
+    );
+  }
+
 }
 
 /**
