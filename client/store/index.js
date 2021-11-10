@@ -8,8 +8,8 @@ import cardReducer from './pokemoncard'
 //auth,
 const reducer = combineReducers(
   { auth,
-    cardsReducer,
-    cardReducer
+    cards:cardsReducer,
+    card:cardReducer
  
   })
 const middleware = composeWithDevTools(

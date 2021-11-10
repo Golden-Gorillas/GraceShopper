@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
-import { PokemonCards } from './components/PokemonCardInventroy';
+import  PokemonCards from './components/PokemonCardInventroy';
 import SingleCardView from './components/singleCardView';
 import { me } from './store'
-
+import { fetchCard, fetchCards } from './store/pokemoncards';
 /**
  * COMPONENT
  */
@@ -20,7 +20,6 @@ class Routes extends Component {
 
     return (
       <div>
-        (
           <Switch>
             <Route exact path='/' component={ Login } />
             <Route exact path="/login" component={Login} />
@@ -28,7 +27,6 @@ class Routes extends Component {
             <Route exact path="/cards" component={PokemonCards}/>
             <Route exact path="/cards/:id" component={SingleCardView}/>
           </Switch>
-        )
       </div>
     )
   }

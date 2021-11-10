@@ -1,6 +1,6 @@
 import axios from 'axios'
 //action
-const SET_CARDS = 'SET_CARDS'
+export const SET_CARDS = 'SET_CARDS'
 
 export const setCards = (cards) => {
     return{
@@ -11,9 +11,9 @@ export const setCards = (cards) => {
 export const fetchCards = () => {
     return async (dispatch) => {
         try{
-            const { data} = await axios.get('/api/cards')
-            console.log("THUNK: ",data)
-            dispatch(setCards(data))
+            const {data: cards} = await axios.get('/api/cards')
+            //console.log("THUNK:")
+            dispatch(setCards(cards))
 
         }catch(err){
             throw(err)
