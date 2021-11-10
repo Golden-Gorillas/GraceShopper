@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchCards } from '../store/pokemoncards';
+import axios from 'axios';
 
 // if we have issues check props :)
 
-class pokemonCards extends Component {
+export class PokemonCards extends Component {
+	constructor(props) {
+		super(props);
+	}
+	componentDidMount() {
+		this.props.getCards();
+	}
 	render() {
-		const cards = this.props.cards;
-		console.log(cards);
+		const { cards = [] } = this.props;
+		console.log(this.props);
+
 		return (
 			<div>
 				<h1>card list</h1>
@@ -24,10 +33,13 @@ class pokemonCards extends Component {
 	}
 }
 
-const mapStatetoProps = (state) => {
+const stateprops = (state) => {
 	return {
 		cards: state.cards,
 	};
 };
+const dispatchprops = (dispatch) => ({
+	getCards: () => dispatch(fetchCards()),
+});
 
-export default connect(mapStatetoProps, null)(pokemonCards);
+export default connect(stateprops, dispatchprops)(PokemonCards);
