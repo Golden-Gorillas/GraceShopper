@@ -8,6 +8,7 @@ export const setCards = (cards) => {
     cards,
   };
 };
+
 //thunk
 export const fetchCards = () => {
   return async (dispatch) => {
