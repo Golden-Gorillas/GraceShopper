@@ -3,23 +3,19 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
+import PokemonCards from './components/PokemonCardInventory';
 import SingleCardView from './components/singleCardView';
-import pokemonCards from './components/pokemonCardInventory';
 import { me } from './store';
-import { fetchCards } from './store/pokemoncards';
 
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  async componentDidMount() {
-    await this.props.fetchCardsFromServer();
-    console.log(this.props);
-  }
+	async componentDidMount() {
+		this.props.loadInitialData();
+	}
 
-  render() {
-    //const {isLoggedIn} = this.props
 
     return (
       <div>
@@ -33,6 +29,7 @@ class Routes extends Component {
       </div>
     );
   }
+
 }
 
 /**
@@ -48,15 +45,17 @@ class Routes extends Component {
 
 //
 const mapState = (state) => {
-  return {
-    cards: state.cards,
-  };
+	return {
+		cards: state.cards,
+	};
 };
 
-const mapDispatch = (dispatch, { history }) => {
-  return {
-    fetchCardsFromServer: () => dispatch(fetchCards()),
-  };
+const mapDispatch = (dispatch) => {
+	return {
+		loadInitialData() {
+			dispatch(me());
+		},
+	};
 };
 
 export default connect(mapState, mapDispatch)(Routes);
