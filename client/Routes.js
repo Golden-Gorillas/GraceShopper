@@ -6,6 +6,7 @@ import Home from './components/Home';
 import PokemonCards from './components/PokemonCardInventory';
 import SingleCardView from './components/singleCardView';
 import { me } from './store';
+import UserCart from './components/UserCart';
 
 /**
  * COMPONENT
@@ -24,12 +25,12 @@ class Routes extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/cards" component={PokemonCards} />
           <Route exact path="/cards/:id" component={SingleCardView} />
+          <Route exact path="/cart" component={UserCart} />
         </Switch>
       </div>
     );
   }
 }
-
 /**
  * CONTAINER
  */
