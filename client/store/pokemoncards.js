@@ -1,5 +1,5 @@
-import axios from 'axios';
-//action
+import axios from "axios";
+
 const SET_CARDS = 'SET_CARDS';
 
 export const setCards = (cards) => {
@@ -9,20 +9,13 @@ export const setCards = (cards) => {
   };
 };
 
-//thunk
 export const fetchCards = () => {
   return async (dispatch) => {
-    const { data } = await axios.get('/api/cards');
-    dispatch(setCards(data));
-  };
-};
-
-//reduce
-export default function cardsReducer(state = [], action) {
-  switch (action.type) {
-    case SET_CARDS:
-      return action.cards;
-    default:
-      return state;
+    try {
+      const { data } =  await axios.get("/api/cards");
+      dispatch(setCards(data));
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
