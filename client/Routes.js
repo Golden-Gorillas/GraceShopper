@@ -11,13 +11,10 @@ import { me } from './store';
  */
 class Routes extends Component {
 	async componentDidMount() {
-		await this.props.fetchCardsFromServer();
-		console.log(this.props);
+		this.props.loadInitialData();
 	}
 
 	render() {
-		//const {isLoggedIn} = this.props
-
 		return (
 			<div>
 				<Switch>
@@ -50,9 +47,11 @@ const mapState = (state) => {
 	};
 };
 
-const mapDispatch = (dispatch, { history }) => {
+const mapDispatch = (dispatch) => {
 	return {
-		fetchCardsFromServer: () => dispatch(fetchCards()),
+		loadInitialData() {
+			dispatch(me());
+		},
 	};
 };
 
