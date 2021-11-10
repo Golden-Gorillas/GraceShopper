@@ -6,7 +6,11 @@ import Home from './components/Home';
 import PokemonCards from './components/PokemonCardInventory';
 import SingleCardView from './components/singleCardView';
 import { me } from './store';
+<<<<<<< HEAD
+import UserCart from './components/UserCart';
+=======
 
+>>>>>>> 15fa8bbe75f81af66cf7ab1bfce442c8d57af2f2
 
 /**
  * COMPONENT
@@ -16,6 +20,22 @@ class Routes extends Component {
 		this.props.loadInitialData();
 	}
 
+<<<<<<< HEAD
+	render() {
+		return (
+			<div>
+				<Switch>
+					<Route exact path='/' component={Login} />
+					<Route exact path='/login' component={Login} />
+					<Route exact path='/signup' component={Signup} />
+					<Route exact path='/cards' component={PokemonCards} />
+					<Route exact path='/cards/:id' component={SingleCardView} />
+					<Route exact path='/cart' component={UserCart} />
+				</Switch>
+			</div>
+		);
+	}
+=======
 
     return (
       <div>
@@ -30,6 +50,7 @@ class Routes extends Component {
     );
   }
 
+>>>>>>> 15fa8bbe75f81af66cf7ab1bfce442c8d57af2f2
 }
 
 /**

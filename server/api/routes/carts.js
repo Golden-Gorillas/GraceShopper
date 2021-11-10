@@ -20,7 +20,7 @@ const requireToken = async (req, res, next) => {
 	}
 };
 
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
 	try {
 		const data = await Cart.findAll({});
 		res.send(data);
@@ -29,7 +29,7 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', requireToken, async (req, res, next) => {
 	try {
 		const cart = await Cart.findOne({
 			where: { id: req.params.id },
