@@ -6,53 +6,31 @@ import Home from './components/Home';
 import PokemonCards from './components/PokemonCardInventory';
 import SingleCardView from './components/singleCardView';
 import { me } from './store';
-<<<<<<< HEAD
 import UserCart from './components/UserCart';
-=======
-
->>>>>>> 15fa8bbe75f81af66cf7ab1bfce442c8d57af2f2
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-	async componentDidMount() {
-		this.props.loadInitialData();
-	}
+  async componentDidMount() {
+    this.props.loadInitialData();
+  }
 
-<<<<<<< HEAD
-	render() {
-		return (
-			<div>
-				<Switch>
-					<Route exact path='/' component={Login} />
-					<Route exact path='/login' component={Login} />
-					<Route exact path='/signup' component={Signup} />
-					<Route exact path='/cards' component={PokemonCards} />
-					<Route exact path='/cards/:id' component={SingleCardView} />
-					<Route exact path='/cart' component={UserCart} />
-				</Switch>
-			</div>
-		);
-	}
-=======
-
+  render() {
     return (
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/cards" component={pokemonCards} />
+          <Route exact path="/cards" component={PokemonCards} />
           <Route exact path="/cards/:id" component={SingleCardView} />
+          <Route exact path="/cart" component={UserCart} />
         </Switch>
       </div>
     );
   }
-
->>>>>>> 15fa8bbe75f81af66cf7ab1bfce442c8d57af2f2
 }
-
 /**
  * CONTAINER
  */
@@ -66,17 +44,17 @@ class Routes extends Component {
 
 //
 const mapState = (state) => {
-	return {
-		cards: state.cards,
-	};
+  return {
+    cards: state.cards,
+  };
 };
 
 const mapDispatch = (dispatch) => {
-	return {
-		loadInitialData() {
-			dispatch(me());
-		},
-	};
+  return {
+    loadInitialData() {
+      dispatch(me());
+    },
+  };
 };
 
 export default connect(mapState, mapDispatch)(Routes);
