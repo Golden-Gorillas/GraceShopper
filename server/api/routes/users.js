@@ -46,4 +46,30 @@ router.get('/:id', requireToken, async (req, res, next) => {
   }
 });
 
+router.put('/:id', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: { id: req.params.id },
+      include: { model: Cart },
+    });
+    res.send(await user.update(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: { id: req.params.id },
+      include: { model: Cart },
+    });
+
+    await user.destroy();
+    res.send(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
