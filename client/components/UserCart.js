@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCart } from '../store/usercart';
+import { fetchCart, removeSpecifiedCard } from '../store/usercart';
 
 export class UserCart extends React.Component {
 	componentDidMount() {
@@ -13,11 +13,7 @@ export class UserCart extends React.Component {
 		console.log('componentDidMount', localStorage);
 	}
 
-	// componentDidUpdate(prevProps, prevState) {}
-
 	render() {
-		console.log('render', this.props);
-
 		return (
 			<div>
 				{!this.props.cart.cards
@@ -26,11 +22,19 @@ export class UserCart extends React.Component {
 							return (
 								<div>
 									<div>
-										<img className='cartImage' src={card.imageUrl} />
+										<div>
+											<img className='cartImage' src={card.imageUrl} />
+										</div>
+										<div>{card.name}</div>
+										<div>{card.price}</div>
+										<div>{card.stock}</div>
 									</div>
-									<div>{card.name}</div>
-									<div>{card.price}</div>
-									<div>{card.stock}</div>
+									<button
+										onClick={() =>
+											this.props.deleteCard(this.props.cart.id, card.id)
+										}>
+										X
+									</button>
 								</div>
 							);
 					  })}
@@ -49,6 +53,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch, { history }) => {
 	return {
 		loadCart: (id) => dispatch(fetchCart(id)),
+		deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
 	};
 };
 

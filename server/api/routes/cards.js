@@ -23,7 +23,6 @@ const requireToken = async (req, res, next) => {
 router.get('/', async (req, res, next) => {
 	try {
 		const data = await Card.findAll();
-		console.log(data);
 		res.send(data);
 	} catch (error) {
 		next(error);
@@ -42,7 +41,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //If we decide to have a page for admins to add cards
-router.post(':/addCards', requireToken, async (req, res, next) => {
+router.post('/addCards', requireToken, async (req, res, next) => {
 	try {
 		res.send(await Card.create(req.body));
 	} catch (error) {

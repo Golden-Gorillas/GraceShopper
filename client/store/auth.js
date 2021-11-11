@@ -2,6 +2,7 @@ import axios from 'axios';
 import history from '../history';
 
 const TOKEN = 'token';
+const CARTID = 'cartId';
 
 /**
  * ACTION TYPES
@@ -41,6 +42,7 @@ export const authenticate =
 
 export const logout = () => {
 	window.localStorage.removeItem(TOKEN);
+	window.localStorage.removeItem(CARTID);
 	history.push('/login');
 	return {
 		type: SET_AUTH,
