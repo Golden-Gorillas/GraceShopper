@@ -48,37 +48,41 @@ router.post('/addCart', requireToken, async (req, res, next) => {
 	}
 });
 
-router.put('/:id', requireToken, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
 	try {
-		const updateCart = await Cart.findOne({
+		let updateCart = await Cart.findOne({
 			where: {
 				id: req.params.id,
 			},
 			include: { model: Card },
 		});
-		res.send(await updateCart.update(req.body));
+		if (req.body.delete) {
+			await updateCart.removeCard(req.body.delete);
+		} else if (req.body.add) {
+			await updateCart.addCard(req.body.add);
+		}
+
+		updateCart = await Cart.findOne({
+			where: {
+				id: req.params.id,
+			},
+			include: { model: Card },
+		});
+
+		res.send(updateCart);
 	} catch (error) {
 		next(error);
 	}
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireToken, async (req, res, next) => {
 	try {
-		console.log('axios delete', req.body, req.params);
 		let deleteCart = await Cart.findOne({
 			where: { id: req.params.id },
 			include: { model: Card },
 		});
-		console.log(req.body);
-		if (req.body.cardId) {
-			await deleteCart.removeCard(req.body.cardId);
-			deleteCart = await Cart.findOne({
-				where: { id: req.params.id },
-				include: { model: Card },
-			});
-		} else {
-			deleteCart = await deleteCart.destroy();
-		}
+		await deleteCart.destroy();
+		// }
 		res.send(deleteCart);
 	} catch (error) {
 		next(error);

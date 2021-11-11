@@ -10,17 +10,17 @@ export class UserCart extends React.Component {
 			window.localStorage.setItem('cartId', cartId);
 		}
 		this.props.loadCart(JSON.parse(cartId));
-		console.log('componentDidMount', localStorage);
 	}
 
 	render() {
+		const { cart, deleteCard } = this.props;
 		return (
 			<div>
-				{!this.props.cart.cards
+				{!cart.cards
 					? 'No Data'
-					: this.props.cart.cards.map((card) => {
+					: cart.cards.map((card) => {
 							return (
-								<div>
+								<div key={card.id}>
 									<div>
 										<div>
 											<img className='cartImage' src={card.imageUrl} />
@@ -29,10 +29,7 @@ export class UserCart extends React.Component {
 										<div>{card.price}</div>
 										<div>{card.stock}</div>
 									</div>
-									<button
-										onClick={() =>
-											this.props.deleteCard(this.props.cart.id, card.id)
-										}>
+									<button onClick={() => deleteCard(cart.id, card.id)}>
 										X
 									</button>
 								</div>

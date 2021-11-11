@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const SET_CART = 'SET_CART';
 const REMOVE_CARD = 'REMOVE_CARD';
+const ADD_TO_CART = 'ADD_TO_CART';
 
 const setCart = (cart) => {
 	return {
@@ -17,11 +18,17 @@ const removeCard = (cart) => {
 	};
 };
 
+const addToCart = (cart) => {
+	return {
+		type: ADD_TO_CART,
+		cart,
+	};
+};
+
 export const fetchCart = (id) => {
 	return async (dispatch) => {
 		try {
 			const { data } = await axios.get(`/api/carts/${id}`);
-			console.log('redux data', data);
 			dispatch(setCart(data));
 		} catch (error) {
 			console.error(error);
@@ -32,10 +39,23 @@ export const fetchCart = (id) => {
 export const removeSpecifiedCard = (cartId, cardId) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios.delete(`/api/carts/${cartId}`, {
-				data: { cardId },
+			const { data } = await axios.put(`/api/carts/${cartId}`, {
+				delete: cardId,
 			});
 			dispatch(removeCard(data));
+		} catch (error) {
+			console.error(error);
+		}
+	};
+};
+
+export const addCardToCart = (cartId, cardId) => {
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.put(`/api/carts/${cartId}`, {
+				add: cardId,
+			});
+			dispatch(addToCart(data));
 		} catch (error) {
 			console.error(error);
 		}
@@ -47,6 +67,8 @@ export default function cartReducer(state = [], action) {
 		case SET_CART:
 			return action.cart;
 		case REMOVE_CARD:
+			return action.cart;
+		case ADD_TO_CART:
 			return action.cart;
 		default:
 			return state;
