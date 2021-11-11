@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
+const Cart = require('./Cart');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
@@ -43,7 +44,10 @@ User.prototype.generateToken = function () {
  * classMethods
  */
 User.authenticate = async function ({ userEmail, password }) {
-	const user = await this.findOne({ where: { userEmail } });
+	const user = await this.findOne({
+		where: { userEmail },
+		include: { model: Cart },
+	});
 	if (!user || !(await user.correctPassword(password))) {
 		const error = Error('Incorrect userEmail/password');
 		error.status = 401;
@@ -55,7 +59,7 @@ User.authenticate = async function ({ userEmail, password }) {
 User.findByToken = async function (token) {
 	try {
 		const { id } = await jwt.verify(token, process.env.JWT);
-		const user = User.findByPk(id);
+		const user = User.findOne({ where: { id: id }, include: { model: Cart } });
 		if (!user) {
 			throw 'nooo';
 		}

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-	models: { Cart, User },
+	models: { Cart, User, Card },
 } = require('../../db');
 
 const requireToken = async (req, res, next) => {
@@ -29,12 +29,13 @@ router.get('/', requireToken, async (req, res, next) => {
 	}
 });
 
-router.get('/:id', requireToken, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 	try {
 		const cart = await Cart.findOne({
 			where: { id: req.params.id },
-			include: { model: User },
+			include: { model: Card },
 		});
+		console.log('api', cart);
 		res.send(cart);
 	} catch (err) {
 		next(err);
@@ -55,7 +56,7 @@ router.put('/:id', requireToken, async (req, res, next) => {
 			where: {
 				id: req.params.id,
 			},
-			include: { model: User },
+			include: { model: Card },
 		});
 		res.send(await updateCart.update(req.body));
 	} catch (error) {
@@ -67,7 +68,7 @@ router.delete('/:id', requireToken, async (req, res, next) => {
 	try {
 		const deleteCart = await Cart.findOne({
 			where: { id: req.params.id },
-			include: { model: User },
+			include: { model: Card },
 		});
 		await deleteCart.destroy();
 		res.send(deleteCart);
