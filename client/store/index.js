@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import auth from './auth';
 import cardsReducer from './pokemoncards';
 import cardReducer from './pokemoncard';
+import cartReducer from './usercart';
 import axios from 'axios';
 //auth,
 
@@ -21,6 +22,7 @@ middleware = [...middleware, createLogger({ collapsed: true })];
 const appReducer = combineReducers({
 	cards: cardsReducer,
 	card: cardReducer,
+	cart: cartReducer,
 	auth,
 });
 

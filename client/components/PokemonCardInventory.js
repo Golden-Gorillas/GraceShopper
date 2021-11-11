@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { fetchCards } from '../store/pokemoncards';
 import axios from 'axios';
 
@@ -15,7 +15,6 @@ export class PokemonCards extends Component {
 	}
 	render() {
 		const { cards = [] } = this.props;
-		console.log(this.props);
 
 		return (
 			<div>
@@ -24,8 +23,10 @@ export class PokemonCards extends Component {
 					{cards.map((card) => (
 						<div className='singleContainer' key={card.id}>
 							<div>
-								<Link to={`/cards/${card.id}`} ><h1>{card.name}</h1></Link>
-							</div>	
+								<Link to={`/cards/${card.id}`}>
+									<h1>{card.name}</h1>
+								</Link>
+							</div>
 							<p>{card.price}</p>
 							<img src={card.imageUrl} />
 						</div>

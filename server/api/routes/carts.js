@@ -1,12 +1,11 @@
 const router = require('express').Router();
 const {
-	models: { Cart, User },
+	models: { Cart, User, Card },
 } = require('../../db');
 
 const requireToken = async (req, res, next) => {
 	try {
 		const token = req.headers.authorization;
-		console.log(token);
 		const user = await User.findByToken(token);
 		req.user = user;
 
@@ -29,11 +28,11 @@ router.get('/', requireToken, async (req, res, next) => {
 	}
 });
 
-router.get('/:id', requireToken, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 	try {
 		const cart = await Cart.findOne({
 			where: { id: req.params.id },
-			include: { model: User },
+			include: { model: Card },
 		});
 		res.send(cart);
 	} catch (err) {
@@ -41,7 +40,7 @@ router.get('/:id', requireToken, async (req, res, next) => {
 	}
 });
 
-router.post(':/addCart', requireToken, async (req, res, next) => {
+router.post('/addCart', requireToken, async (req, res, next) => {
 	try {
 		res.send(await Cart.create(req.body));
 	} catch (error) {
@@ -55,7 +54,7 @@ router.put('/:id', requireToken, async (req, res, next) => {
 			where: {
 				id: req.params.id,
 			},
-			include: { model: User },
+			include: { model: Card },
 		});
 		res.send(await updateCart.update(req.body));
 	} catch (error) {
@@ -63,13 +62,23 @@ router.put('/:id', requireToken, async (req, res, next) => {
 	}
 });
 
-router.delete('/:id', requireToken, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
 	try {
-		const deleteCart = await Cart.findOne({
+		console.log('axios delete', req.body, req.params);
+		let deleteCart = await Cart.findOne({
 			where: { id: req.params.id },
-			include: { model: User },
+			include: { model: Card },
 		});
-		await deleteCart.destroy();
+		console.log(req.body);
+		if (req.body.cardId) {
+			await deleteCart.removeCard(req.body.cardId);
+			deleteCart = await Cart.findOne({
+				where: { id: req.params.id },
+				include: { model: Card },
+			});
+		} else {
+			deleteCart = await deleteCart.destroy();
+		}
 		res.send(deleteCart);
 	} catch (error) {
 		next(error);
