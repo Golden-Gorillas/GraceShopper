@@ -169,29 +169,30 @@ button:active {
 }
 /* Start of Multiple Cards*/
 
-.cardsContainer {
-	width: 1000px;
-	background-color: burlywood;
-	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
+.cardsContainer{
+  width: 1000px;
+  background-color: burlywood;
+  box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.singleRowContainer {
-	flex: 50%;
-	border-radius: 5px;
-	box-shadow: 2px 2px 2px 2px white;
-	margin-bottom: 25px;
-	align-items: center;
-	justify-content: center;
-	align-content: center;
-	text-align: center;
+.singleRowContainer{
+  flex: 50%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px white;
+  margin-bottom: 25px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 }
-.card {
-	border-radius: 10px;
-	width: 300px;
-	height: 400px;
-	padding: 1px;
-	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+.card{
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+  padding:1px;
+  box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+
 }
