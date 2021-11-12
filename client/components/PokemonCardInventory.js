@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCards } from '../store/pokemoncards';
 import { addCardToCart } from '../store/usercart';
-<<<<<<< HEAD
-
-=======
 import axios from 'axios';
 import Filter from './Filter'
->>>>>>> 14c6ccdb712a922fd7bdca3ca7e95f2b757cd56c
 
 // if we have issues check props :)
 
@@ -34,12 +30,11 @@ export class PokemonCards extends Component {
 				<h1>card list</h1>
 				<div className='cardsContainer'>
 					{this.props.cards.map((card) => (
-						<div className='singleContainer' key={card.id}>
-							<div>
-								<Link to={`/cards/${card.id}`} ><h1>{card.name}</h1></Link>
-							</div>
-							<p>{card.price}</p>
-							<img src={card.imageUrl} />
+						<div className='singleRowContainer' key={card.id}>
+							<Link className="nameLink" to={`/cards/${card.id}`} ><h1 id="cardname">{card.name}</h1></Link>
+							
+							<p className="price">{card.price}</p>
+							<img className="card" src={card.imageUrl} />
 							<br/>
 						    <button type="button" onClick={() => addToCart(cart.id, card.id)}>
 								Add to Cart

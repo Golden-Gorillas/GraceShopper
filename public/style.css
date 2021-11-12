@@ -19,18 +19,8 @@ nav {
 }
 
 nav a {
-<<<<<<< HEAD
-  display: inline-block;
-  margin: 1em;
-  color: purple;
-}
-
-.navText{
-  color: purple;
-=======
 	display: inline-block;
 	margin: 1em;
->>>>>>> 80c2a9ed6c79c879de5af7ed9149c6e29bff92ef
 }
 
 form div {
@@ -67,11 +57,6 @@ form div {
 	justify-content: center;
 }
 
-<<<<<<< HEAD
-=======
-.bannerText {
-}
->>>>>>> 80c2a9ed6c79c879de5af7ed9149c6e29bff92ef
 
 h1 {
 	font-size: 60px;
@@ -209,6 +194,5 @@ button:active{
   height: 400px;
   padding:1px;
   box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-  
 
 }
