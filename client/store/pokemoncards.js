@@ -15,7 +15,6 @@ export const setCards = (cards) => {
   };
 };
 
-
 export const _deleteCard = (card) => ({
   type: DELETE_CARD,
   card,
@@ -76,27 +75,28 @@ export const addCard = (card, history) => {
 };
 
 export const filterCardsByRarity = (rarity) => (dispatch) => {
-	console.log(rarity)
-		dispatch({
-			type: FILTER_CARDS_BY_RARITY,
-			payload: {
-				rarity: rarity,
-			}
-		})
-}
-
+  console.log(rarity);
+  dispatch({
+    type: FILTER_CARDS_BY_RARITY,
+    payload: {
+      rarity: rarity,
+    },
+  });
+};
 
 // const initialState = { cards:[], filteredCards: [], rarity: ""}
 //reducer
 export default function cardsReducer(state = [], action) {
-	switch (action.type) {
-		case SET_CARDS:
-			return action.cards;
-		case FILTER_CARDS_BY_RARITY:{
-			console.log(action);
-		const currentState = [...state]
-			return currentState.filter((card)=> card.rarity === action.payload.rarity)
-		}
+  switch (action.type) {
+    case SET_CARDS:
+      return action.cards;
+    case FILTER_CARDS_BY_RARITY: {
+      console.log(action);
+      const currentState = [...state];
+      return currentState.filter(
+        (card) => card.rarity === action.payload.rarity
+      );
+    }
     case DELETE_CARD:
       return state.filter((card) => card.id !== action.card.id);
     case UPDATE_CARD: {
