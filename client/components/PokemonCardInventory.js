@@ -15,9 +15,8 @@ export class PokemonCards extends Component {
 		this.props.getCards();
 	}
 	render() {
-		const { cards = [] } = this.props.cards;
-		console.log(this.props);
-
+		console.log("inventory", this.props.cards);
+		if(!this.props.cards) return (<div>waiting</div>)
 		return (
 			<div>
 				<div>
@@ -25,7 +24,7 @@ export class PokemonCards extends Component {
 				</div>
 				<h1>card list</h1>
 				<div className='cardsContainer'>
-					{cards.map((card) => (
+					{this.props.cards.map((card) => (
 						<div className='singleContainer' key={card.id}>
 							<div>
 								<Link to={`/cards/${card.id}`} ><h1>{card.name}</h1></Link>

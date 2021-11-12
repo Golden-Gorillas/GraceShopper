@@ -24,29 +24,28 @@ export const fetchCards = () => {
 	};
 };
 
-export const filterCardsByRarity = (cards, rarity) => (dispatch) => {
+export const filterCardsByRarity = (rarity) => (dispatch) => {
+	console.log(rarity)
 		dispatch({
 			type: FILTER_CARDS_BY_RARITY,
 			payload: {
 				rarity: rarity,
-				items: rarity === "" ? cards : cards.filter((card)=> card.rarity.indexOf(rarity) >= 0)
 			}
 		})
 }
 
 
-const initialState = { cards:[], filteredCards: [], rarity: ""}
+// const initialState = { cards:[], filteredCards: [], rarity: ""}
 //reducer
-export default function cardsReducer(state = initialState, action) {
+export default function cardsReducer(state = [], action) {
 	switch (action.type) {
 		case SET_CARDS:
-			return {...state, cards: action.cards, filteredCards: action.cards};
-		case FILTER_CARDS_BY_RARITY:
-			return {
-				...state,
-				filteredCards: action.payload.items,
-				rarity: action.payload.rarity
-			}
+			return action.cards;
+		case FILTER_CARDS_BY_RARITY:{
+			console.log(action);
+		const currentState = [...state]
+			return currentState.filter((card)=> card.rarity === action.payload.rarity)
+		}
 		default:
 			return state;
 	}

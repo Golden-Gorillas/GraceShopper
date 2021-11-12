@@ -13,7 +13,6 @@ class Filter extends Component {
               value={this.props.size}
               onChange={(event) => {
                 this.props.filterCardsByRarity(
-                  this.props.cards,
                   event.target.value
                 );
               }}
