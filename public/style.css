@@ -14,9 +14,18 @@ label {
   display: block;
 }
 
+nav {
+  background-color: goldenrod;
+}
+
 nav a {
   display: inline-block;
   margin: 1em;
+  color: purple;
+}
+
+.navText{
+  color: purple;
 }
 
 form div {
@@ -53,9 +62,6 @@ form div {
     justify-content: center;
 }
 
-.bannerText {
-
-}
 
 h1 { font-size: 60px; }
 /* h3 {
@@ -100,7 +106,7 @@ h6 { font-size: 22px; } */
   box-shadow: 5px 10px black;
   float: left;
 }
-.pokecardtext{  
+.pokecardtext{
   padding: 10px;
   display:flex;
   width:50%;
