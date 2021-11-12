@@ -37,6 +37,14 @@ class Admin extends Component {
           </button>
         </div>
 
+        {this.state.activeView === 'Cards' ? (
+          <Link to={`/admin/cards/add`}>
+            <button>Create a new Pokemon</button>
+          </Link>
+        ) : (
+          ''
+        )}
+
         <div className="adminMain">
           {this.state.activeView === 'Cards'
             ? !this.props.cards
@@ -44,7 +52,6 @@ class Admin extends Component {
               : this.props.cards.map((card) => {
                   return (
                     <div key={card.id} className="adminCard">
-                      {' '}
                       <div className="adminCardIMG">
                         <img src={card.imageUrl} />
                       </div>{' '}

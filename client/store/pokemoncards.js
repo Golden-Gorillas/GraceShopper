@@ -3,6 +3,7 @@ import axios from 'axios';
 export const SET_CARDS = 'SET_CARDS';
 export const DELETE_CARD = 'DELETE_CARD';
 export const UPDATE_CARD = 'UPDATE_CARD';
+export const ADD_CARD = 'ADD_CARD';
 
 const TOKEN = 'token';
 
@@ -23,6 +24,10 @@ export const _updateCard = (card) => ({
   card,
 });
 
+export const _addCard = (card) => ({
+  type: ADD_CARD,
+  card,
+});
 //thunk
 export const fetchCards = () => {
   return async (dispatch) => {
@@ -56,6 +61,18 @@ export const updateCard = (card, history) => {
     history.push(`/cards/${card.id}`);
   };
 };
+
+export const addCard = (card, history) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem(TOKEN);
+    const { data } = await axios.post(`/api/cards/addCards`, card, {
+      headers: { authorization: token },
+    });
+    dispatch(_addCard(data));
+    history.push(`/cards/${data.id}`);
+  };
+};
+
 //reduce
 export default function cardsReducer(state = [], action) {
   switch (action.type) {
@@ -71,6 +88,9 @@ export default function cardsReducer(state = [], action) {
           return card;
         }
       });
+    }
+    case ADD_CARD: {
+      return [...state, action.robot];
     }
     default:
       return state;

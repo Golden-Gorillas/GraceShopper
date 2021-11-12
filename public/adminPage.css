@@ -27,6 +27,7 @@
   justify-content: center;
   align-items: center;
   width: 90%;
+  margin-top: 20px;
 }
 
 .adminCard {
@@ -63,4 +64,23 @@
 .adminCardEditForm {
   display: flex;
   margin-left: 25px;
+  flex-direction: column;
+}
+
+#editCard div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#editCard div input {
+  text-align: center;
+}
+
+#editCard {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
