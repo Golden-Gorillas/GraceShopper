@@ -10,6 +10,9 @@ import axios from 'axios';
 export class PokemonCards extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			test: []
+		}
 	}
 	componentDidMount() {
 		this.props.getCards();
@@ -19,20 +22,26 @@ export class PokemonCards extends Component {
 		const cart = id.cart;
 		return (
 			<div>
+				<select>
+					<option>Lowest->Highest</option>
+					<option>Highest->Lowest</option>
+					<option>A-Z</option>
+				</select>
 				<h1>card list</h1>
 				<div className='cardsContainer'>
 					{cards.map((card) => (
-						<div className='singleContainer' key={card.id}>
-							<div>
-								<Link to={`/cards/${card.id}`}>
-									<h1>{card.name}</h1>
-								</Link>
-							</div>
-							<p>{card.price}</p>
-							<img src={card.imageUrl} />
-							<button onClick={() => addToCart(cart.id, card.id)}>
+						<div className='singleRowContainer' key={card.id}>
+							
+							<Link className="namelink" to={`/cards/${card.id}`} ><h1 id="cardname">{card.name}</h1></Link>
+							
+							
+							<p className="price">$ {card.price}</p>
+							<img className="card" src={card.imageUrl} />
+							<br/>
+						    <button onClick={() => addToCart(cart.id, card.id)}>
 								Add to Cart
 							</button>
+							
 						</div>
 					))}
 				</div>

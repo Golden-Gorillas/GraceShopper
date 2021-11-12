@@ -3,40 +3,28 @@ import { connect } from "react-redux";
 import { fetchCard } from "../store/pokemoncard";
 
 
-const pokemoncard = {
-    name : "Charizard",
-    price: 100,
-    description:"Card Text:Pokemon Power: Energy Burn As often as you like during your turn \
-    (before you attack), you may turn all Energy attached to Charizard in R Energy for this rest of the turn. This power can't \
-    be used if Charizard is Asleep, Confused, or Paralyzed. \
-    Attack 1:(🔥🔥🔥🔥) Fire Spin (100) \
-    Discard 2 Energy cards attached to Charizard in order to use this attack.", 
-    imageUrl: 'https://product-images.tcgplayer.com/fit-in/400x558/250320.jpg'
-}
+// empty string temp fix 
+const tempDescription = " Check back for further updates enjoy this quote while you wait. \
+'Anyone who has never made a mistake has never tried anything new'- Albert Einstein"
 
 class SingleCardView extends Component{
-    constructor(){
-        super()
-        this.state = {
-            card : pokemoncard
-        }
-    }
+   
     componentDidMount(){
         this.props.getCard(this.props.match.params.id)
     }
     render(){
-        const {name,price,description,imageUrl,inStock,rarity} = this.props.card
+        const {name,price,description,imageUrl,stock,rarity, type} = this.props.card
         return (
             <div className="singlecontainer">
                 <div className="singlecardTitle">
-                    <h1>{name}</h1>
-                    <h5 id="stock">{inStock ? 'InStock': 'Not Avalible'}</h5>
+                    <h1 id="singlecardname">{name}</h1>
+                    <h5 id="stock">{stock>0 ? 'InStock': 'Not Avalible'}</h5>
                 </div>
                 <div className="onepokemoncard">
                     <div className="cardpic">
                         <img className="pokecardcolumn" src={imageUrl}/>
                     </div>
-                    <div className= "pokecardtext">{description}<br/>{rarity}</div>
+                    <div className= "pokecardtext">{description===''? tempDescription: description}<br/><br/>{rarity} {type}</div>
                 </div>
                 <div className="buyContainer">
                     <h2>$</h2>
