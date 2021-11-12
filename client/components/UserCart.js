@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, removeSpecifiedCard } from '../store/usercart';
+import { Link } from 'react-router-dom';
 
 export class UserCart extends React.Component {
 	componentDidMount() {
@@ -17,6 +18,7 @@ export class UserCart extends React.Component {
 		return (
 			<div>
 				{!cart.cards
+
 					? 'No Data'
 					: cart.cards.map((card) => {
 							return (
@@ -33,7 +35,6 @@ export class UserCart extends React.Component {
 										{/* <label for="Quantity">Quantity</label> */}
 										<input type="number" id="quantity" min="1" max={card.stock}/>
 										<input type="submit"/>
-								
 										
 									</div>
 									<button onClick={() => deleteCard(cart.id, card.id)}>
@@ -44,7 +45,8 @@ export class UserCart extends React.Component {
 
 							);
 					  })}
-				<button type='button'>CHECKOUT</button>	  
+				<Link to={`/checkout`}><button type='button'>CHECKOUT</button></Link>	
+				
 			</div>
 		);
 	}
