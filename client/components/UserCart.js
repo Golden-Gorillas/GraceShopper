@@ -27,14 +27,24 @@ export class UserCart extends React.Component {
 										</div>
 										<div>{card.name}</div>
 										<div>{card.price}</div>
+										{console.log(cart)}
 										<div>{card.stock}</div>
+										
+										{/* <label for="Quantity">Quantity</label> */}
+										<input type="number" id="quantity" min="1" max={card.stock}/>
+										<input type="submit"/>
+								
+										
 									</div>
 									<button onClick={() => deleteCard(cart.id, card.id)}>
 										X
 									</button>
+
 								</div>
+
 							);
 					  })}
+				<button type='button'>CHECKOUT</button>	  
 			</div>
 		);
 	}

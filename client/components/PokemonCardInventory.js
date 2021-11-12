@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCards } from '../store/pokemoncards';
 import { addCardToCart } from '../store/usercart';
-import axios from 'axios';
+
 
 // if we have issues check props :)
 
@@ -38,7 +38,7 @@ export class PokemonCards extends Component {
 							<p className="price">$ {card.price}</p>
 							<img className="card" src={card.imageUrl} />
 							<br/>
-						    <button onClick={() => addToCart(cart.id, card.id)}>
+						    <button type="button" onClick={() => addToCart(cart.id, card.id)}>
 								Add to Cart
 							</button>
 							
