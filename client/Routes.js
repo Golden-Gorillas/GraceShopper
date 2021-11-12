@@ -8,6 +8,7 @@ import SingleCardView from './components/singleCardView';
 import { me } from './store';
 import UserCart from './components/UserCart';
 import Admin from './components/Admin';
+import AdminEditCard from './components/AdminEditCard';
 
 /**
  * COMPONENT
@@ -28,6 +29,7 @@ class Routes extends Component {
           <Route exact path="/cards/:id" component={SingleCardView} />
           <Route exact path="/cart" component={UserCart} />
           <Route exact path="/admin" component={Admin} />
+          <Route exact path="/admin/cards/:id" component={AdminEditCard} />
         </Switch>
       </div>
     );
