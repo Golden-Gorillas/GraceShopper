@@ -8,7 +8,7 @@
     "build:dev": "npm run build -- --watch --mode=development",
     "seed": "node script/seed.js",
     "start": "JWT=shh node server",
-    "start windows": "set JWT=shh&&nodemon server",
+    "start:windows": "set JWT=shh&&nodemon server",
     "start:dev": "npm run build:dev & npm run start-server",
     "start:dev:logger": "LOGGING=true npm run start:dev",
     "start:dev:seed": "SEED=true npm run start:dev",
@@ -29,6 +29,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "pokemontcgsdk": "^2.0.0",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

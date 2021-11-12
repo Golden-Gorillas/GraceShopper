@@ -17,7 +17,6 @@ export const fetchCard = (cardId) => {
     dispatch(singleCard(card));
   };
 };
-
 //reducer
 
 export default function cardReducer(state = {}, action) {
