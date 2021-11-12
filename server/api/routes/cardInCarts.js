@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { CardsInCart, Card },
+  models: { CardsInCart, Cart, Card },
 } = require('../../db');
 
 const requireToken = async (req, res, next) => {
@@ -25,8 +25,6 @@ router.put('/', async (req, res, next) => {
     const cardId = req.body.data.cardId;
     const cardQty = req.body.data.quantity;
 
-    console.log('From the API route', cartId, cardId, cardQty);
-
     let updateCart = await CardsInCart.update(
       { quantity: cardQty },
       {
@@ -37,7 +35,14 @@ router.put('/', async (req, res, next) => {
       }
     );
 
-    res.send(updateCart);
+    let returnCart = await Cart.findOne({
+      where: {
+        id: cartId,
+      },
+      include: { model: Card },
+    });
+
+    res.send(returnCart);
   } catch (error) {
     next(error);
   }

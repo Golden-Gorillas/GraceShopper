@@ -28,6 +28,34 @@ export class UserCart extends React.Component {
                     <div>{card.name}</div>
                     <div>{card.price}</div>
                     <div>{card.cardsInCart.quantity}</div>
+
+                    <form onSubmit={this.handleSubmit}>
+                      <input
+                        type="number"
+                        id="quantity"
+                        min="1"
+                        max={card.stock}
+                      />
+
+                      <button
+                        type="submit"
+                        onClick={(event) => {
+                          event.preventDefault();
+
+                          if (event.target.previousSibling.value > card.stock) {
+                            return;
+                          } else {
+                            this.props.updateQuantity(
+                              this.props.cart.id,
+                              card.id,
+                              event.target.previousSibling.value
+                            );
+                          }
+                        }}
+                      >
+                        Change Quantity{' '}
+                      </button>
+                    </form>
                   </div>
                   <button onClick={() => deleteCard(cart.id, card.id)}>
                     X
@@ -35,6 +63,7 @@ export class UserCart extends React.Component {
                 </div>
               );
             })}
+        <button type="button">CHECKOUT</button>
       </div>
     );
   }

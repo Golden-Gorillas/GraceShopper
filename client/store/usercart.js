@@ -35,10 +35,10 @@ const _setQuantity = (cart) => {
 
 export const setQuantity = (cartId, cardId, quantity) => {
   return async (dispatch) => {
-    console.log('From the redux store:', cartId, cardId, quantity);
     const { data } = await axios.put(`/api/cardInCarts`, {
       data: { cartId, cardId, quantity },
     });
+    console.log(data);
     dispatch(_setQuantity(data));
   };
 };
@@ -87,6 +87,8 @@ export default function cartReducer(state = [], action) {
     case REMOVE_CARD:
       return action.cart;
     case ADD_TO_CART:
+      return action.cart;
+    case SET_QUANTITY:
       return action.cart;
     default:
       return state;

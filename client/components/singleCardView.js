@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { fetchCard } from "../store/pokemoncard";
+import { addCardToCart } from '../store/usercart';
 
 
 // empty string temp fix 
@@ -13,7 +14,11 @@ class SingleCardView extends Component{
         this.props.getCard(this.props.match.params.id)
     }
     render(){
-        const {name,price,description,imageUrl,stock,rarity, type} = this.props.card
+        const {name,price,description,imageUrl,stock,rarity, type, id} = this.props.card
+        const { addToCart } = this.props
+        const {cart={}} = this.props.id
+        console.log(cart.id)
+        
         return (
             <div className="singlecontainer">
                 <div className="singlecardTitle">
@@ -29,7 +34,7 @@ class SingleCardView extends Component{
                 <div className="buyContainer">
                     <h2>$</h2>
                     <h1 className="price">{price}</h1>
-                    <button className="buyadd" type='button'>Add/Buy</button>
+                    <button className="buyadd" type='button' onClick={() => addToCart(cart.id, id)}>Add/Buy</button>
                 </div>
             </div>
         )
@@ -38,12 +43,14 @@ class SingleCardView extends Component{
 
 const stateprops = state =>{
     return {
-        card: state.card
+        card: state.card,
+        id: state.auth,
     }
 }
 const dispatchprops = dispatch =>{
     return{
-        getCard: (id)=> dispatch(fetchCard(id))
+        getCard: (id)=> dispatch(fetchCard(id)),
+        addToCart: (cartId, cardId) => dispatch(addCardToCart(cartId, cardId)),
     }
 }
 
