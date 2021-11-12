@@ -1,18 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCards } from "../store/pokemoncards";
-import { Link } from "react-router-dom"
+import { fetchCards } from '../store/pokemoncards';
+import { Link } from 'react-router-dom';
 
 
 /**
  * COMPONENT
  */
 export class Home extends Component {
+	componentDidMount() {
+		this.props.getCards();
+	}
 
-
-  componentDidMount(){
-    this.props.getCards()
-  }
 
   render(){
     const { cards = [] } = this.props.cards;
@@ -50,14 +49,13 @@ export class Home extends Component {
 /**
  * CONTAINER
  */
- const stateprops = (state) => {
-  return {
-      cards: state.cards
-  }
-}
+const stateprops = (state) => {
+	return {
+		cards: state.cards,
+	};
+};
 const dispatchprops = (dispatch) => ({
-  getCards: ()=> dispatch(fetchCards())
+	getCards: () => dispatch(fetchCards()),
+});
 
-})
-
-export default connect(stateprops, dispatchprops)(Home)
+export default connect(stateprops, dispatchprops)(Home);

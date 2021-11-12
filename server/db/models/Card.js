@@ -12,6 +12,7 @@ const Card = db.define('card', {
   },
   description: {
     type: Sequelize.TEXT,
+    defaultValue: "Working on getting Information Enjoy this Quote 'Only he who can see the invisible can do the impossible.'- Frank L.Gaines "     
   },
   imageUrl: {
     type: Sequelize.TEXT,
