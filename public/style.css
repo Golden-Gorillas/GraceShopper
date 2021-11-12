@@ -1,17 +1,17 @@
 body {
-	font-family: sans-serif;
-	margin: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  font-family: sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 label {
-	display: block;
+  display: block;
 }
 
 nav {
@@ -19,62 +19,46 @@ nav {
 }
 
 nav a {
-<<<<<<< HEAD
   display: inline-block;
   margin: 1em;
-  color: purple;
-}
-
-.navText{
-  color: purple;
-=======
-	display: inline-block;
-	margin: 1em;
->>>>>>> 80c2a9ed6c79c879de5af7ed9149c6e29bff92ef
 }
 
 form div {
-	margin: 1em;
-	display: inline-block;
+  margin: 1em;
+  display: inline-block;
 }
 
 .cardsContainer {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card {
-	width: 25%;
-	padding-bottom: 25%; /* Same as width, sets height */
-	margin-bottom: 2%; /* (100-32*3)/2 */
-	position: relative;
+  width: 25%;
+  padding-bottom: 25%; /* Same as width, sets height */
+  margin-bottom: 2%; /* (100-32*3)/2 */
+  position: relative;
 }
 
 .banner {
-	color: white;
-	background: url('http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg')
-		top left/cover no-repeat;
-	height: 300px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  color: white;
+  background: url('http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg')
+    top left/cover no-repeat;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flexWrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-<<<<<<< HEAD
-=======
-.bannerText {
-}
->>>>>>> 80c2a9ed6c79c879de5af7ed9149c6e29bff92ef
 
 h1 {
-	font-size: 60px;
+  font-size: 60px;
 }
 /* h3 {
   font-size: 32px;
@@ -92,108 +76,106 @@ h6 { font-size: 22px; } */
 
 /* START OF SINGLE CARD*/
 
-.singlecontainer{
+.singlecontainer {
   background-color: burlywood;
   border-radius: 5% 10%;
   padding: 5px;
-  box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-  border: 5px solid white
+  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+  border: 5px solid white;
 }
-.singlecardTitle{
+.singlecardTitle {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
-#singlecardname{
+#singlecardname {
   color: white;
-  padding-right:5px;
+  padding-right: 5px;
   text-shadow: 2px 2px 4px black;
 }
-.onepokemoncard{
+.onepokemoncard {
   width: 700px;
   border: 5px solid white;
   padding: 5px;
   padding-bottom: 25px;
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
-.cardpic{
+.cardpic {
   display: flex;
-  width:50%;
+  width: 50%;
 }
-.pokecardcolumn{
-  border : 1px solid black;
-  box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+.pokecardcolumn {
+  border: 1px solid black;
+  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
   border-radius: 10px;
   width: 300px;
   height: 400px;
   float: left;
 }
-.pokecardtext{
+.pokecardtext {
   padding: 10px;
-  display:flex;
-  width:50%;
+  display: flex;
+  width: 50%;
   justify-content: center;
 }
-.buyContainer{
-
+.buyContainer {
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-#stock{
+#stock {
   color: green;
 }
-.price{
+.price {
   color: green;
   padding: 5px;
   border: 5px;
 }
-.buyadd{
+.buyadd {
   width: 100px;
   height: 40px;
   border-radius: 10px;
-  border-color:whitesmoke;
+  border-color: whitesmoke;
   border: 10px;
-  box-shadow: 2px 2px rgb(252,252,252)
+  box-shadow: 2px 2px rgb(252, 252, 252);
 }
-button:hover{
-  background-color:rgb(0, 255, 81);
-  box-shadow: 0 0 20px rgb(147,248,198);
+button:hover {
+  background-color: rgb(0, 255, 81);
+  box-shadow: 0 0 20px rgb(147, 248, 198);
 }
-button:active{
+button:active {
   background-color: rgb(0, 255, 81);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-#cardname{
+#cardname {
   color: white;
-  text-shadow:2px 2px 4px black;
+  text-shadow: 2px 2px 4px black;
   display: flex;
   text-align: center;
 }
-#cardname:hover{
+#cardname:hover {
   text-shadow: 4px 4px 8px green;
   color: black;
 }
-.namelink{
+.namelink {
   display: flex;
   text-align: center;
   justify-content: center;
 }
 /* Start of Multiple Cards*/
 
-.cardsContainer{
+.cardsContainer {
   width: 1000px;
   background-color: burlywood;
-  box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
-.singleRowContainer{
+.singleRowContainer {
   flex: 50%;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 2px white;
@@ -203,12 +185,10 @@ button:active{
   align-content: center;
   text-align: center;
 }
-.card{
+.card {
   border-radius: 10px;
   width: 300px;
   height: 400px;
-  padding:1px;
-  box-shadow : 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-  
-
+  padding: 1px;
+  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
 }
