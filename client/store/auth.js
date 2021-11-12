@@ -34,6 +34,9 @@ export const authenticate =
 		try {
 			const res = await axios.post(`/auth/${method}`, { userEmail, password });
 			window.localStorage.setItem(TOKEN, res.data.token);
+			//guestCart = window.localStorage.getItem('guestCart');
+			// Cart => axios.put with guestCart
+			//window.localStorage.removeItem('guestCart');
 			dispatch(me());
 		} catch (authError) {
 			return dispatch(setAuth({ error: authError }));
