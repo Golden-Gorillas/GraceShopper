@@ -1,0 +1,86 @@
+.adminTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminHeader {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.headerButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.adminMain {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin-top: 20px;
+}
+
+.adminCard {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.adminCard img {
+  width: 150px;
+  height: 200px;
+}
+
+.adminPokemonCard {
+  display: flex;
+  flex-direction: row;
+}
+
+.adminCardPic {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.adminCardPic img {
+  width: 70%;
+  height: 70%;
+}
+
+.adminCardEditForm {
+  display: flex;
+  margin-left: 25px;
+  flex-direction: column;
+}
+
+#editCard div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#editCard div input {
+  text-align: center;
+}
+
+#editCard {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
