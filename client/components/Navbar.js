@@ -29,7 +29,6 @@ export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
             <a href="#" onClick={handleClick}>
               Logout
             </a>
-            {/* <Link to='/cards'>Card Inventory</Link> */}
           </div>
         ) : (
           <div>

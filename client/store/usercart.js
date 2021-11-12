@@ -33,17 +33,6 @@ const _setQuantity = (cart) => {
   };
 };
 
-// export const updateCard = (card, history) => {
-//   return async (dispatch) => {
-//     const token = window.localStorage.getItem(TOKEN);
-//     const { data: updated } = await axios.put(`/api/cards/${card.id}`, card, {
-//       headers: { authorization: token },
-//     });
-//     dispatch(_updateCard(updated));
-//     history.push(`/cards/${card.id}`);
-//   };
-// };
-
 export const setQuantity = (cartId, cardId, quantity) => {
   return async (dispatch) => {
     console.log('From the redux store:', cartId, cardId, quantity);

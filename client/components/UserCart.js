@@ -27,7 +27,7 @@ export class UserCart extends React.Component {
                     </div>
                     <div>{card.name}</div>
                     <div>{card.price}</div>
-                    <div>{card.stock}</div>
+                    <div>{card.cardsInCart.quantity}</div>
                   </div>
                   <button onClick={() => deleteCard(cart.id, card.id)}>
                     X
