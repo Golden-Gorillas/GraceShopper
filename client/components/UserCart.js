@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, removeSpecifiedCard } from '../store/usercart';
+import { fetchGCart } from '../store/guest';
 
 export class UserCart extends React.Component {
 	constructor() {
@@ -12,23 +13,28 @@ export class UserCart extends React.Component {
 	componentDidMount() {
 		//Guest Token
 		//Guest Cart
-
 		/*Will always have a initState = cart {
 			cards []
 		}
 
-
+		
 		When we click logIn/Signup => authenticate
 			move the localStorage guestCart into the userCart - check store/auth.js
 
 		*/
-		let cartId = window.localStorage.getItem('cartId');
-		if (!cartId || cartId === undefined) {
-			cartId = JSON.stringify(this.props.id.cart.id);
-			window.localStorage.setItem('cartId', cartId);
+		console.log(this.props.id.id);
+		if (!window.localStorage.getItem('token')) {
+			this.props.loadGuest();
+			console.log(this.props);
+			// console.log(JSON.parse(localStorage.getItem('guest')));
+		} else {
+			let cartId = window.localStorage.getItem('cartId');
+			if (!cartId || cartId === undefined) {
+				cartId = JSON.stringify(this.props.id.cart.id);
+				window.localStorage.setItem('cartId', cartId);
+			}
+			this.props.loadCart(JSON.parse(cartId));
 		}
-
-		this.props.loadCart(JSON.parse(cartId));
 	}
 
 	render() {
@@ -80,6 +86,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch, { history }) => {
 	return {
+		loadGuest: () => dispatch(fetchGCart()),
 		loadCart: (id) => dispatch(fetchCart(id)),
 		deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
 	};
