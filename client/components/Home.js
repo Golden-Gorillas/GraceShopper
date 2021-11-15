@@ -14,28 +14,28 @@ export class Home extends Component {
 
 
   render(){
-    const { cards = [] } = this.props.cards;
+    const { cards = [] } = this.props;
   console.log("home", cards);
   let count = 0;
   return (
-    <div>
+    <div className="homeContainer">
       <div className="banner">
         <div className="bannerText">
-          <h1>Golden Gorillas</h1>
-          <h1>Pokemon Card Store</h1>
+          <h1>Featured Legendary Cards!</h1>
         </div>
-        {/* <img className="banner" src="http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg"/> */}
       </div>
-      <div className="cardsContainer">
+      <div className="featuredCardsContainer">
         {cards.filter((card) => card.rarity === "legendary").map((card) => {
           if(count < 5) {
             count++
             return (
-          <div className="cards" key={card.id}>
+          <div className="cardCard" key={card.id}>
             <Link to= {`/cards/${card.id}`}>
           <img src={card.imageUrl} />
-          <h6>{card.name}</h6>
+          <div className="cardDetails">
+          <p>{card.name}</p>
           <p>${card.price}</p>
+          </div>
           </Link>
           </div>
             )}

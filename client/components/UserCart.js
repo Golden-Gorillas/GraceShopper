@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { fetchCart, removeSpecifiedCard } from '../store/usercart';
 
 export class UserCart extends React.Component {
+	constructor() {
+		super()
+		this.state = {
+			guestCart: []
+		}
+	}
 	componentDidMount() {
 		//Guest Token
 		//Guest Cart
@@ -14,7 +20,7 @@ export class UserCart extends React.Component {
 
 		When we click logIn/Signup => authenticate
 			move the localStorage guestCart into the userCart - check store/auth.js
-			
+
 		*/
 		let cartId = window.localStorage.getItem('cartId');
 		if (!cartId || cartId === undefined) {
@@ -26,6 +32,7 @@ export class UserCart extends React.Component {
 	}
 
 	render() {
+		console.log(this.state);
 		const { cart, deleteCard } = this.props;
 		return (
 			<div>
