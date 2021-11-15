@@ -25,7 +25,7 @@ router.put('/', async (req, res, next) => {
 		const cardId = req.body.data.cardId;
 		const cardQty = req.body.data.quantity;
 
-		let updateCart = await CardsInCart.update(
+		await CardsInCart.update(
 			{ quantity: cardQty },
 			{
 				where: {
