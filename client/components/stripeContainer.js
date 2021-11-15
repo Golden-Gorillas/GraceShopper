@@ -4,7 +4,6 @@ import StripeCheckout from "react-stripe-checkout"
 import {loadStripe } from '@stripe/stripe-js'
 import axios from  'axios'
 import {toast} from "react-toastify"
-const result = dotenv.config()
 
 
 const PUBLIC_KEY='pk_test_51JvSqJLOSRd631P9xi33Di1YywXZ1WnSLmbJ77NM9K0eF5wXWvX2uHNLrK3UO2VNskjo2sojffSJBs5ZUAgQrrB300eEnHMpW5'
