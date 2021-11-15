@@ -30,6 +30,7 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
+<<<<<<< HEAD
   (userEmail, password, method, history) => async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, { userEmail, password });
@@ -40,6 +41,20 @@ export const authenticate =
       return dispatch(setAuth({ error: authError }));
     }
   };
+=======
+	(userEmail, password, method) => async (dispatch) => {
+		try {
+			const res = await axios.post(`/auth/${method}`, { userEmail, password });
+			window.localStorage.setItem(TOKEN, res.data.token);
+			//guestCart = window.localStorage.getItem('guestCart');
+			// Cart => axios.put with guestCart
+			//window.localStorage.removeItem('guestCart');
+			dispatch(me());
+		} catch (authError) {
+			return dispatch(setAuth({ error: authError }));
+		}
+	};
+>>>>>>> 054f886a43ffeb52ec7f67ce787b62a0405cdac6
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);

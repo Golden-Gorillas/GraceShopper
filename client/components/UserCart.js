@@ -1,17 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, removeSpecifiedCard, setQuantity } from '../store/usercart';
+import { fetchCart, removeSpecifiedCard } from '../store/usercart';
 
 export class UserCart extends React.Component {
-  componentDidMount() {
-    let cartId = window.localStorage.getItem('cartId');
-    if (!cartId || cartId === undefined) {
-      cartId = JSON.stringify(this.props.id.cart.id);
-      window.localStorage.setItem('cartId', cartId);
-    }
-    this.props.loadCart(JSON.parse(cartId));
-  }
+	componentDidMount() {
+		//Guest Token
+		//Guest Cart
 
+<<<<<<< HEAD
   render() {
     const { cart, deleteCard } = this.props;
     const priceQuantity = (cardQty, cardPrice) => {
@@ -144,22 +140,77 @@ export class UserCart extends React.Component {
       </div>
     );
   }
+=======
+		/*Will always have a initState = cart {
+			cards []
+		}
+
+
+		When we click logIn/Signup => authenticate
+			move the localStorage guestCart into the userCart - check store/auth.js
+			
+		*/
+		let cartId = window.localStorage.getItem('cartId');
+		if (!cartId || cartId === undefined) {
+			cartId = JSON.stringify(this.props.id.cart.id);
+			window.localStorage.setItem('cartId', cartId);
+		}
+
+		this.props.loadCart(JSON.parse(cartId));
+	}
+
+	render() {
+		const { cart, deleteCard } = this.props;
+		return (
+			<div>
+				{!cart.cards
+					? 'No Data'
+					: cart.cards.map((card) => {
+							return (
+								<div key={card.id}>
+									<div>
+										<div>
+											<img className='cartImage' src={card.imageUrl} />
+										</div>
+										<div>{card.name}</div>
+										<div>{card.price}</div>
+										{console.log(cart)}
+										<div>{card.stock}</div>
+
+										{/* <label for="Quantity">Quantity</label> */}
+										<input
+											type='number'
+											id='quantity'
+											min='1'
+											max={card.stock}
+										/>
+										<input type='submit' />
+									</div>
+									<button onClick={() => deleteCard(cart.id, card.id)}>
+										X
+									</button>
+								</div>
+							);
+					  })}
+				<button type='button'>CHECKOUT</button>
+			</div>
+		);
+	}
+>>>>>>> 054f886a43ffeb52ec7f67ce787b62a0405cdac6
 }
 
 const mapState = (state) => {
-  return {
-    cart: state.cart,
-    id: state.auth,
-  };
+	return {
+		cart: state.cart,
+		id: state.auth,
+	};
 };
 
 const mapDispatch = (dispatch, { history }) => {
-  return {
-    loadCart: (id) => dispatch(fetchCart(id)),
-    deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
-    updateQuantity: (cartId, cardId, quantity) =>
-      dispatch(setQuantity(cartId, cardId, quantity)),
-  };
+	return {
+		loadCart: (id) => dispatch(fetchCart(id)),
+		deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
+	};
 };
 
 export default connect(mapState, mapDispatch)(UserCart);
