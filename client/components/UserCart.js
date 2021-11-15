@@ -128,7 +128,8 @@ export class UserCart extends React.Component {
                           })
                           .reduce((accum, next) => {
                             return (accum = accum + next);
-                          })}
+                          })
+                          .toFixed(2)}
                   </strong>
                 </center>
               </td>
