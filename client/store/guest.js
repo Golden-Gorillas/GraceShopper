@@ -43,6 +43,8 @@ export const fetchGCart = () => {
 	};
 };
 
+export const addCardToGuest = () => {};
+
 export default function guestReducer(state = [], action) {
 	switch (action.type) {
 		case SET_GUEST_CART:
