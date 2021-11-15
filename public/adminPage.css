@@ -85,3 +85,13 @@
   justify-content: center;
   position: relative;
 }
+
+.userCard {
+  display: flex;
+  width: 300px;
+  height: 100px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}

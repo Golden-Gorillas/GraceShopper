@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { fetchCart, removeSpecifiedCard } from '../store/usercart';
 
 export class UserCart extends React.Component {
@@ -8,6 +9,22 @@ export class UserCart extends React.Component {
 		//Guest Cart
 
 <<<<<<< HEAD
+=======
+import { Link } from 'react-router-dom';
+import { fetchCart, removeSpecifiedCard, setQuantity } from '../store/usercart';
+
+export class UserCart extends React.Component {
+
+  componentDidMount() {
+    let cartId = window.localStorage.getItem('cartId');
+    if (!cartId || cartId === undefined) {
+      cartId = JSON.stringify(this.props.id.cart.id);
+      window.localStorage.setItem('cartId', cartId);
+    }
+    this.props.loadCart(JSON.parse(cartId));
+  }
+ 
+>>>>>>> 60f307f37667ed9c03aec509ea5b003f79cac4e6
   render() {
     const { cart, deleteCard } = this.props;
     const priceQuantity = (cardQty, cardPrice) => {
@@ -133,9 +150,13 @@ export class UserCart extends React.Component {
           </tfoot>
         </table>
         <div className="checkOutButton">
+<<<<<<< HEAD
           <button className="" type="button">
             CHECKOUT
           </button>
+=======
+        <Link to={{pathname:`/checkout/${cart.id}`, total: ()=>cart.cards.map(card => card.price).reduce((a,b)=> a + b)}} ><button type="button">CHECKOUT</button></Link>
+>>>>>>> 60f307f37667ed9c03aec509ea5b003f79cac4e6
         </div>
       </div>
     );

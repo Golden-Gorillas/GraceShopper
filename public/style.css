@@ -1,9 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Condensed:wght@700&family=Roboto+Slab&display=swap');
+
+/* font-family: 'Nunito', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Roboto Slab', serif; */
+
 body {
   font-family: sans-serif;
   margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
+  /* background-color: #FFED4A; */
 }
 
 a {
@@ -14,13 +23,15 @@ label {
   display: block;
 }
 
-nav {
-  background-color: goldenrod;
-}
+
+
+/* nav styling */
 
 nav a {
   display: inline-block;
   margin: 1em;
+  color: white;
+  font-family: 'Nunito', sans-serif;
 }
 
 form div {
@@ -28,53 +39,108 @@ form div {
   display: inline-block;
 }
 
-.cardsContainer {
+
+.navHeadline {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  color: white;
+  background-color: #1E2C5E;
+  padding: 0;
+  margin: 0;
+  font-size: ;
+}
+
+.navHeadline h1 {
+  color: #FFCB05;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 5em;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* .cardsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.card {
-  width: 25%;
-  padding-bottom: 25%; /* Same as width, sets height */
-  margin-bottom: 2%; /* (100-32*3)/2 */
-  position: relative;
+/* .card { */
+  /* width: 25%; */
+  /* padding-bottom: 25%; Same as width, sets height */
+  /* margin-bottom: 2%; (100-32*3)/2 */
+  /* position: relative; */
+/* } */
+
+/* home page styling */
+
+.homeContainer {
+  background-image: url("https://st2.depositphotos.com//8047136/11779/v/450/depositphotos_117792506-stock-illustration-game-balls-seamless-pattern.jpg");
+  background-color: rgba(255,255,255,0.7);
+  background-blend-mode: darken;
+  background-repeat: repeat;
+  padding: 0;
+  margin: 0;
 }
 
 .banner {
-  color: white;
-  background: url('http://frugalfindsduringnaptime.com/wp-content/uploads/2019/07/pokemon-channel.jpg')
-    top left/cover no-repeat;
-  height: 300px;
-  display: flex;
+  color: black;
+  background: top left/cover no-repeat;
+  height: 20vh;
+  width: 100vw;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
-.flexWrapper {
+/* .flexWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.bannerText {
-}
-
-h1 {
-  font-size: 60px;
-}
-/* h3 {
-  font-size: 32px;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-h6 { font-size: 22px; } */
 
 .banner h1 {
   margin: 0;
-  text-shadow: 2px 2px 6px #000;
   text-align: center;
+  background-color: white;
+  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+  font-size: 3em;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-radius: 20px;
+}
+
+.featuredCardsContainer {
+  padding-left: 5em;
+  padding-right: 5em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 35px;
+  gap: 10px;
+}
+
+.cardCard {
+border-style: solid;
+border-width: 1.5em;
+border-color: white;
+border-radius: 20px;
+background-color: white;
+box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cardCard img {
+  width: 15vw;
+}
+
+.cardDetails {
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  font-family: 'Nunito', sans-serif;
+
 }
 
 /* START OF SINGLE CARD*/

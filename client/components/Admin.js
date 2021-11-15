@@ -89,7 +89,12 @@ class Admin extends Component {
             ? !this.props.users
               ? 'Loading'
               : this.props.users.map((user) => {
-                  return <div key={user.id}> {user.userEmail} </div>;
+                  return <div className = "userCard" key={user.id}> <strong>User Email:</strong>{user.userEmail}
+                  <div>
+                   <strong>User Role:</strong>
+                   {user.role}
+                   </div>
+                  </div>
                 })
             : ''}
         </div>
