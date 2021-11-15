@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchCart, removeSpecifiedCard, setQuantity } from '../store/usercart';
 
 export class UserCart extends React.Component {
+
   componentDidMount() {
     let cartId = window.localStorage.getItem('cartId');
     if (!cartId || cartId === undefined) {
@@ -12,14 +13,14 @@ export class UserCart extends React.Component {
     }
     this.props.loadCart(JSON.parse(cartId));
   }
-
+ 
   render() {
     const { cart, deleteCard } = this.props;
     return (
       <div>
         {!cart.cards
           ? 'No Data'
-          : cart.cards.map((card) => {
+          : cart.cards.map((card) => {	  
               return (
                 <div key={card.id}>
                   <div>
@@ -64,7 +65,9 @@ export class UserCart extends React.Component {
                 </div>
               );
             })}
-        <button type="button">CHECKOUT</button>
+		<h4>{cart.cards ? cart.cards.map(card => card.price).reduce((a,b)=> a + b) : null}</h4>	
+        <Link to={{pathname:`/checkout/${cart.id}`, total: ()=>cart.cards.map(card => card.price).reduce((a,b)=> a + b)}} ><button type="button">CHECKOUT</button></Link>
+		
       </div>
     );
   }

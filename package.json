@@ -21,16 +21,24 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.21.1",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.16.4",
     "history": "^4.9.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "pokemontcgsdk": "^2.0.0",
-    "sequelize": "^6.3.5"
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^8.1.0",
+    "sequelize": "^6.3.5",
+    "stripe": "^8.188.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

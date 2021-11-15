@@ -10,7 +10,7 @@ import UserCart from './components/UserCart';
 import Admin from './components/Admin';
 import AdminEditCard from './components/AdminEditCard';
 import AdminAddCard from './components/AdminAddCard';
-import Checkout from './components/checkoutPage';
+import Checkout from './components/Checkout';
 
 /**
  * COMPONENT
@@ -29,7 +29,7 @@ class Routes extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/cards" component={PokemonCards} />
           <Route exact path="/cards/:id" component={SingleCardView} />
-          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/checkout/:cartid" component={Checkout} />
           <Route exact path="/cart" component={UserCart} />
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/admin/cards/add" component={AdminAddCard} />
