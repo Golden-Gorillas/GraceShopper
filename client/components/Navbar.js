@@ -4,67 +4,66 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 
 export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
-	return (
-		<div className = "navHeadline">
-			<h1>Golden Gorillas</h1>
-			<h2> Pokemon Card Store</h2>
-			<nav>
-				{isLoggedIn ? (
-					<div>
-						{/* The navbar will show these links after you log in */}
-						<Link to='/'>Home</Link>
-						<Link to='/cards'>Card Inventory</Link>
-						<Link to='/cart'>Cart</Link>
-						<a href='#' onClick={handleClick}>
-							Logout
-						</a>
-						<h3>Welcome, {userEmail} </h3>
-					</div>
-				) : user.role === 'admin' ? (
-					<div>
-						{/* The navbar will show these links to admins */}
-						<Link to='/'>Home</Link>
-						<Link to='/cards'>Card Inventory</Link>
-						<Link to='/cart'>Cart</Link>
-						<Link to='/admin'>Admin</Link>
-						<a href='#' onClick={handleClick}>
-							Logout
-						</a>
-					</div>
-				) : (
-					<div>
-						{/* The navbar will show these links before you log in */}
-						<Link to='/'>Home</Link>
-						<Link to='/cards'>Card Inventory</Link>
-						<Link to='/cart'>Cart</Link>
-						<Link to='/login'>Login</Link>
-						<Link to='/signup'>Sign Up</Link>
-						{/* <Link to='/cards'>Card Inventory</Link> */}
-					</div>
-				)}
-			</nav>
-
-		</div>
-	);
+  return (
+    <div>
+      <h1 className="navText">Golden Gorillas Pokemon Card Store</h1>
+      <nav>
+        {!user ? (
+          <div>
+            {/* The navbar will show these links before you log in */}
+            <Link to="/">Home</Link>
+            <Link to="/cards">Card Inventory</Link>
+            <Link to="/cart">Cart</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+            {/* <Link to='/cards'>Card Inventory</Link> */}
+          </div>
+        ) : user === 'admin' ? (
+          <div>
+            {/* The navbar will show these links to admins */}
+            <Link to="/">Home</Link>
+            <Link to="/cards">Card Inventory</Link>
+            <Link to="/cart">Cart</Link>
+            <Link to="/admin">Admin</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div>
+            {/* The navbar will show these links after you log in */}
+            <Link to="/">Home</Link>
+            <Link to="/cards">Card Inventory</Link>
+            <Link to="/cart">Cart</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+            <h3>Welcome, {userEmail} </h3>
+          </div>
+        )}
+      </nav>
+      <hr />
+    </div>
+  );
 };
 
 /**
  * CONTAINER
  */
 const mapState = (state) => {
-	return {
-		user: state.auth,
-		isLoggedIn: !!state.auth.id,
-		userEmail: state.auth.userEmail,
-	};
+  return {
+    user: state.auth.role,
+    isLoggedIn: !!state.auth.id,
+    userEmail: state.auth.userEmail,
+  };
 };
 
 const mapDispatch = (dispatch) => {
-	return {
-		handleClick() {
-			dispatch(logout());
-		},
-	};
+  return {
+    handleClick() {
+      dispatch(logout());
+    },
+  };
 };
 
 export default connect(mapState, mapDispatch)(Navbar);

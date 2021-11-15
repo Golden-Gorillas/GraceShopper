@@ -1,5 +1,7 @@
 //ADD CARD TO GUEST CARD THUNK
 //REMOVE CARD TO GUEST CARD THUNK
+<<<<<<< HEAD
+=======
 import axios from "axios";
 
 const ADD_TO_GUEST_CART = 'ADD_TO_GUEST_CART';
@@ -43,3 +45,4 @@ export default function cardsReducer(state = [], action) {
       return state;
   }
 }
+>>>>>>> 60f307f37667ed9c03aec509ea5b003f79cac4e6

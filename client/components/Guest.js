@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+// AddCardToGuestCart Function (cart, card)
+// RemoveCardFromGuestCart Function (cart,card)
+=======
 import React from "react";
 
 
@@ -20,3 +24,4 @@ const AddCardToGuestCart = (id, cart ) => {
 
 // // getting back the object
 // const copyCartObj = JSON.parse(localStorage.getItem("cart"));
+>>>>>>> 60f307f37667ed9c03aec509ea5b003f79cac4e6

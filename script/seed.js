@@ -44,7 +44,7 @@ async function seed() {
       description: '',
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/223073.jpg',
-      type: 'Fire',
+      type: ['Fire'],
       rarity: 'legendary',
     }),
     Card.create({
@@ -53,7 +53,7 @@ async function seed() {
       description: '',
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/253177.jpg',
-      type: 'Psychic',
+      type: ['Psychic'],
       rarity: 'legendary',
     }),
     Card.create({
@@ -62,7 +62,7 @@ async function seed() {
       description: '',
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/170938.jpg',
-      type: 'Dragon',
+      type: ['Dragon'],
       rarity: 'legendary',
     }),
     Card.create({
@@ -71,7 +71,7 @@ async function seed() {
       description: '',
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/250320.jpg',
-      type: 'Fire',
+      type: ['Fire'],
       rarity: 'legendary',
     }),
     Card.create({
@@ -80,7 +80,7 @@ async function seed() {
       description: '',
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/250339.jpg',
-      type: 'Psychic',
+      type: ['Psychic'],
       rarity: 'legendary',
     }),
     Card.create({
@@ -88,32 +88,32 @@ async function seed() {
       price: 399.98,
       description: '',
       imageUrl: 'https://product-images.tcgplayer.com/fit-in/400x558/88111.jpg',
-      type: 'Electric',
+      type: ['Electric'],
       rarity: 'legendary',
     }),
   ]);
 
   pokemon.configure({ apiKey: 'f3d7da45-593f-4da9-bcd1-f27721f4bc63' });
 
-  for (let i = 0; i <= 50; i++) {
-    const pokemonApiCard = await pokemon.card.find(
-      `base1-${Math.ceil(Math.random() * 102)}`
-    );
+  console.log('Seeding from Pokemon API...');
+  for (let i = 1; i <= 102; i++) {
+    const pokemonApiCard = await pokemon.card.find(`base1-${i}`);
 
     await Card.create({
       name: pokemonApiCard.name,
       price: pokemonApiCard.cardmarket.prices.averageSellPrice,
-      stock: Math.floor(Math.random() * 11),
+      stock: Math.floor(Math.random() * 25),
       description: pokemonApiCard.flavorText,
       imageUrl: pokemonApiCard.images.large,
-      type: pokemonApiCard.type,
+      rarity: pokemonApiCard.rarity,
+      type: pokemonApiCard.types,
     });
   }
 
-  const cart1 = await Cart.create({ items: [] });
-  const cart2 = await Cart.create({ items: [] });
-  const cart3 = await Cart.create({ items: [] });
-  const cart4 = await Cart.create({ items: [] });
+  const cart1 = await Cart.create();
+  const cart2 = await Cart.create();
+  const cart3 = await Cart.create();
+  const cart4 = await Cart.create();
 
   await steven.setCart(cart1);
   await lydia.setCart(cart2);

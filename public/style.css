@@ -218,11 +218,17 @@ button:active {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.buttonMain {
+  margin-bottom: 25px;
+}
 #cardname {
   color: white;
   text-shadow: 2px 2px 4px black;
   display: flex;
   text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 #cardname:hover {
   text-shadow: 4px 4px 8px green;
