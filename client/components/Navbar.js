@@ -8,18 +8,17 @@ export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
     <div>
       <h1 className="navText">Golden Gorillas Pokemon Card Store</h1>
       <nav>
-        {isLoggedIn ? (
+        {!user ? (
           <div>
-            {/* The navbar will show these links after you log in */}
+            {/* The navbar will show these links before you log in */}
             <Link to="/">Home</Link>
             <Link to="/cards">Card Inventory</Link>
             <Link to="/cart">Cart</Link>
-            <a href="#" onClick={handleClick}>
-              Logout
-            </a>
-            <h3>Welcome, {userEmail} </h3>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+            {/* <Link to='/cards'>Card Inventory</Link> */}
           </div>
-        ) : user.role === 'admin' ? (
+        ) : user === 'admin' ? (
           <div>
             {/* The navbar will show these links to admins */}
             <Link to="/">Home</Link>
@@ -32,13 +31,14 @@ export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
           </div>
         ) : (
           <div>
-            {/* The navbar will show these links before you log in */}
+            {/* The navbar will show these links after you log in */}
             <Link to="/">Home</Link>
             <Link to="/cards">Card Inventory</Link>
             <Link to="/cart">Cart</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            {/* <Link to='/cards'>Card Inventory</Link> */}
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+            <h3>Welcome, {userEmail} </h3>
           </div>
         )}
       </nav>
@@ -52,7 +52,7 @@ export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
  */
 const mapState = (state) => {
   return {
-    user: state.auth,
+    user: state.auth.role,
     isLoggedIn: !!state.auth.id,
     userEmail: state.auth.userEmail,
   };
