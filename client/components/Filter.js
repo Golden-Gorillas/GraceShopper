@@ -34,5 +34,5 @@ const mapStateToProps = (state) => ({
   rarity: state.cards.rarity
 });
 
-
+// JOE_CR: Interesting that mapDispatchToProps is an object here.
 export default connect(mapStateToProps, { filterCardsByRarity })(Filter);

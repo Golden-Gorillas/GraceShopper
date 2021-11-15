@@ -45,6 +45,7 @@ export const deleteCard = (cardId) => {
   return async (dispatch) => {
     console.log('test', cardId);
     const token = window.localStorage.getItem(TOKEN);
+    // JOE_CR: Don't forget your error handling!
     const { data } = await axios.delete(`/api/cards/${cardId}`, {
       headers: { authorization: token },
     });
@@ -54,6 +55,8 @@ export const deleteCard = (cardId) => {
 
 export const updateCard = (card, history) => {
   return async (dispatch) => {
+    // JOE_CR: The process of accessing the stored token and incorporating it into your request
+    // is repeated many times in this file. Consider centralizing into its own function.
     const token = window.localStorage.getItem(TOKEN);
     const { data: updated } = await axios.put(`/api/cards/${card.id}`, card, {
       headers: { authorization: token },
@@ -74,6 +77,7 @@ export const addCard = (card, history) => {
   };
 };
 
+// JOE_CR: This looks like something that does not need to be a thunk.
 export const filterCardsByRarity = (rarity) => (dispatch) => {
   console.log(rarity);
   dispatch({

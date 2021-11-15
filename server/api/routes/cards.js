@@ -43,6 +43,8 @@ router.get('/:id', async (req, res, next) => {
 //If we decide to have a page for admins to add cards
 router.post('/addCards', requireToken, async (req, res, next) => {
   try {
+    // JOE_CR: how about associating the admin user with the card created?
+    // Remember you can use req.user to know the user making the request.
     res.send(await Card.create(req.body));
   } catch (error) {
     next(error);
@@ -64,6 +66,7 @@ router.delete('/:id', requireToken, async (req, res, next) => {
     const deleteCard = await Card.findOne({
       where: { id: req.params.id },
     });
+    // JOE_CR: what if deleteCard is null? Check for that!
     await deleteCard.destroy();
     res.send(deleteCard);
   } catch (error) {

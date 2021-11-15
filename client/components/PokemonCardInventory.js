@@ -12,6 +12,7 @@ export class PokemonCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // JOE_CR: Seems to be an artifact that can be removed.
       test: [],
     };
   }
@@ -21,6 +22,7 @@ export class PokemonCards extends Component {
   render() {
     const { id, addToCart } = this.props;
     const cart = id.cart;
+    // JOE_CR: Nice loading state! Use a text element (<h1>, <p>, <span>, etc.) for text. Make this a cool loading gif in the future!
     if (!this.props.cards) return <div>waiting</div>;
     return (
       <div>
@@ -48,6 +50,7 @@ export class PokemonCards extends Component {
                 <strong>Price: </strong>$ {card.price.toFixed(2)}
               </p>
               <img className="card" src={card.imageUrl} />
+              {/* JOE_CR: Get used to using CSS dimensionality (margins/padding) to make space between your elements, instead of <br />. */}
               <br />
               <div className="buttonMain">
                 <button
