@@ -1,7 +1,10 @@
-// // AddCardToGuestCart Function (cart, card)
-// const AddCardToGuestCart = (id, cart ) => {
-//   window.localStorage.setItem(id)
-// }
+import React from "react";
+
+
+// AddCardToGuestCart Function (cart, card)
+const AddCardToGuestCart = (id, cart ) => {
+
+}
 
 // // RemoveCardFromGuestCart Function (cart,card)
 // const RemoveCardFromGuestCart = (id, cart) => {
