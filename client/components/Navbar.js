@@ -5,8 +5,9 @@ import { logout } from '../store';
 
 export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
 	return (
-		<div>
-			<h1 className='navText'>Golden Gorillas Pokemon Card Store</h1>
+		<div className = "navHeadline">
+			<h1>Golden Gorillas</h1>
+			<h2> Pokemon Card Store</h2>
 			<nav>
 				{isLoggedIn ? (
 					<div>
@@ -42,7 +43,7 @@ export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
 					</div>
 				)}
 			</nav>
-			<hr />
+
 		</div>
 	);
 };

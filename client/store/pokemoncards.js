@@ -109,7 +109,7 @@ export default function cardsReducer(state = [], action) {
       });
     }
     case ADD_CARD: {
-      return [...state, action.robot];
+      return [...state, action.card];
     }
     default:
       return state;
