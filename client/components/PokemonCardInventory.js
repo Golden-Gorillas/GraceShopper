@@ -35,12 +35,28 @@ export class PokemonCards extends Component {
                 <h1 id="cardname">{card.name}</h1>
               </Link>
 
-              <p className="price">{card.price}</p>
+              <p className="price">
+                <strong>
+                  In stock:{' '}
+                  {card.stock < 5 ? (
+                    <font color="red"> {card.stock} </font>
+                  ) : (
+                    <font color="green">{card.stock} </font>
+                  )}
+                </strong>{' '}
+                <br />
+                <strong>Price: </strong>$ {card.price.toFixed(2)}
+              </p>
               <img className="card" src={card.imageUrl} />
               <br />
-              <button type="button" onClick={() => addToCart(cart.id, card.id)}>
-                Add to Cart
-              </button>
+              <div className="buttonMain">
+                <button
+                  type="button"
+                  onClick={() => addToCart(cart.id, card.id)}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           ))}
         </div>
