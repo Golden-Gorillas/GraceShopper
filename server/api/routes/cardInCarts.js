@@ -3,6 +3,8 @@ const {
 	models: { CardsInCart, Cart, Card },
 } = require('../../db');
 
+// JOE_CR: This function is unused in this file, and repeated in every route file. Consider centralizing it into its own file,
+// exporting it, and importing it when needed.
 const requireToken = async (req, res, next) => {
 	try {
 		const token = req.headers.authorization;

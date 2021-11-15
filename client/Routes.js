@@ -32,6 +32,7 @@ class Routes extends Component {
           <Route exact path="/checkout/:cartid" component={Checkout} />
           <Route exact path="/cart" component={UserCart} />
           <Route exact path="/admin" component={Admin} />
+          {/* JOE_CR: Consider nesting these routes inside of your admin component. Not necessary, but can lead to better organization. */}
           <Route exact path="/admin/cards/add" component={AdminAddCard} />
           <Route exact path="/admin/cards/:id" component={AdminEditCard} />
         </Switch>

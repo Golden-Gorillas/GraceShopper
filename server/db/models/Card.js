@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Card = db.define('card', {
+  // JOE_CR: Consider adding more validations eventually, like "notEmpty".
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -26,10 +27,12 @@ const Card = db.define('card', {
     allowNull: false,
   },
   rarity: {
+    // JOE_CR: This may be better as an enum type ("common", "rare", "legendary", etc.)
     type: Sequelize.STRING,
     defaultValue: 'common',
   },
   type: {
+    // JOE_CR: Be careful when using the array type. Is this the element of the pokemon?
     type: Sequelize.ARRAY(Sequelize.STRING),
   },
 });

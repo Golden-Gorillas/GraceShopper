@@ -95,9 +95,20 @@ async function seed() {
 
   pokemon.configure({ apiKey: 'f3d7da45-593f-4da9-bcd1-f27721f4bc63' });
 
+<<<<<<< Updated upstream
   console.log('Seeding from Pokemon API...');
   for (let i = 1; i <= 102; i++) {
     const pokemonApiCard = await pokemon.card.find(`base1-${i}`);
+=======
+  for (let i = 0; i <= 50; i++) {
+    // JOE_CR: I love that y'all are contacting an API for this data, very cool.
+    // However, the way this is written makes the seeding take a long time.
+    // Not a big priority, but find a way to allow all 50 of these requests go out in parallel,
+    // instead of one at a time. Promise.all is your friend here.
+    const pokemonApiCard = await pokemon.card.find(
+      `base1-${Math.ceil(Math.random() * 102)}`
+    );
+>>>>>>> Stashed changes
 
     await Card.create({
       name: pokemonApiCard.name,

@@ -1,9 +1,12 @@
+// JOE_CR: This file is named with a starting lowercase letter. It is special compared to its siblings.
+// Stick to your convention!
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCard } from '../store/pokemoncard';
 import { addCardToCart } from '../store/usercart';
 
 // empty string temp fix
+// JOE_CR: There seems to be a default description on the Card model. Which is the solution to this problem?
 const tempDescription =
 	" Check back for further updates enjoy this quote while you wait. \
 'Anyone who has never made a mistake has never tried anything new'- Albert Einstein";
@@ -19,6 +22,8 @@ class SingleCardView extends Component {
 		const { cart = {} } = this.props.id;
 		console.log(cart.id);
 
+		// JOE_CR: In the below code, some classes are all lowercase, and some are camel-cased.
+		// I recommend camel case and making it consistent -- it's hard to debug CSS selectors!
 		return (
 			<div className='singlecontainer'>
 				<div className='singlecardTitle'>
