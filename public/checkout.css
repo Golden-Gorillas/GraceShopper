@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, Helvetica;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.ContainerCustomerInfo{
+      display:flex;
+      justify-content: center;
+      text-align: center;
+      padding:5px
+  }
+.CustomerFName{
+    padding:5px;
+  }
+.CustomerLName{
+    padding:5px;
+}
+.CustomerEmail{
+    padding:5px;
+}
+
+.ContainerShippingInfo{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    padding:5px
+}
+.CustomerAddress{
+    padding:2px
+}
+.CustomerCountry{
+    padding:2px
+
+}
+.CustomerCT{
+    padding:2px
+}
+.CustomerState{
+    padding:2px
+}
+.CustomerZipcode{
+    padding:2px
+}
+.SubmitB{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    padding:5px
+}
