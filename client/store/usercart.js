@@ -4,7 +4,7 @@ const SET_CART = 'SET_CART';
 const REMOVE_CARD = 'REMOVE_CARD';
 const ADD_TO_CART = 'ADD_TO_CART';
 const SET_QUANTITY = 'SET_QUANTITY';
-
+const TOKEN = 'token';
 
 const setCart = (cart) => {
 	return {
@@ -51,8 +51,17 @@ export const setQuantity = (cartId, cardId, quantity) => {
 export const fetchCart = (id) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios.get(`/api/carts/${id}`);
-			dispatch(setCart(data));
+			const token = window.localStorage.getItem(TOKEN);
+			console.log('fetch cart', id, token);
+			if (token) {
+				const { data } = await axios.get(`/api/carts/${id}`, {
+					headers: { authorization: token },
+				});
+				dispatch(setCart(data));
+			} else {
+				const guestData = window.localStorage.getItem('guest');
+				dispatch(setCart(JSON.parse(guestData)));
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -75,10 +84,18 @@ export const removeSpecifiedCard = (cartId, cardId) => {
 export const addCardToCart = (cartId, cardId) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios.put(`/api/carts/${cartId}`, {
-				add: cardId,
-			});
-			dispatch(addToCart(data));
+			const token = window.localStorage.getItem(TOKEN);
+			if (token) {
+				const { data } = await axios.put(`/api/carts/${cartId}`, {
+					add: cardId,
+				});
+				dispatch(addToCart(data));
+			} else {
+				const guestData = JSON.parse(window.localStorage.getItem('guest'));
+				const { data: card } = await axios.get(`/api/cards/${cardId}`);
+				guestData.push(card);
+				dispatch(addToCart(guestData));
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -88,6 +105,7 @@ export const addCardToCart = (cartId, cardId) => {
 export default function cartReducer(state = [], action) {
 	switch (action.type) {
 		case SET_CART:
+			console.log(action);
 			return action.cart;
 		case REMOVE_CARD:
 			return action.cart;

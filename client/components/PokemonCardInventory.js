@@ -10,6 +10,7 @@ import axios from 'axios';
 // if we have issues check props :)
 
 export class PokemonCards extends Component {
+<<<<<<< Updated upstream
   constructor(props) {
     super(props);
     this.state = {
@@ -91,46 +92,78 @@ export class PokemonCards extends Component {
               <Link className="nameLink" to={`/cards/${card.id}`}>
                 <h1 id="cardname">{card.name}</h1>
               </Link>
+=======
+	constructor(props) {
+		super(props);
+		this.state = {
+			test: [],
+		};
+	}
+	componentDidMount() {
+		this.props.getCards();
+	}
+	render() {
+		const { id, addToCart } = this.props;
+		const cart = id.cart;
+		if (!this.props.cards) return <div>waiting</div>;
+		return (
+			<div>
+				<div>
+					<Filter />
+				</div>
+				<h1>card list</h1>
+				<div className='cardsContainer'>
+					{this.props.cards.map((card) => (
+						<div className='singleRowContainer' key={card.id}>
+							<Link className='nameLink' to={`/cards/${card.id}`}>
+								<h1 id='cardname'>{card.name}</h1>
+							</Link>
+>>>>>>> Stashed changes
 
-              <p className="price">
-                <strong>
-                  In stock:{' '}
-                  {card.stock < 5 ? (
-                    <font color="red"> {card.stock} </font>
-                  ) : (
-                    <font color="green">{card.stock} </font>
-                  )}
-                </strong>{' '}
-                <br />
-                <strong>Price: </strong>$ {card.price.toFixed(2)}
-              </p>
-              <img className="card" src={card.imageUrl} />
-              <br />
-              <div className="buttonMain">
-                <button
-                  type="button"
-                  onClick={() => addToCart(cart.id, card.id)}
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+							<p className='price'>
+								<strong>
+									In stock:{' '}
+									{card.stock < 5 ? (
+										<font color='red'> {card.stock} </font>
+									) : (
+										<font color='green'>{card.stock} </font>
+									)}
+								</strong>{' '}
+								<br />
+								<strong>Price: </strong>$ {card.price.toFixed(2)}
+							</p>
+							<img className='card' src={card.imageUrl} />
+							<br />
+							<div className='buttonMain'>
+								<button
+									type='button'
+									onClick={() => {
+										if (!this.props.id.cart.id) {
+											addToCart('', card.id);
+										} else {
+											addToCart(cart.id, card.id);
+										}
+									}}>
+									Add to Cart
+								</button>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		);
+	}
 }
 
 const stateprops = (state) => {
-  return {
-    id: state.auth,
-    cards: state.cards,
-  };
+	return {
+		id: state.auth,
+		cards: state.cards,
+	};
 };
 const dispatchprops = (dispatch) => ({
-  getCards: () => dispatch(fetchCards()),
-  addToCart: (cartId, cardId) => dispatch(addCardToCart(cartId, cardId)),
+	getCards: () => dispatch(fetchCards()),
+	addToCart: (cartId, cardId) => dispatch(addCardToCart(cartId, cardId)),
 });
 
 export default connect(stateprops, dispatchprops)(PokemonCards);

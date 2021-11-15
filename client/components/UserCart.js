@@ -8,18 +8,17 @@ export class UserCart extends React.Component {
 	componentDidMount() {
 		//Guest Token
 		//Guest Cart
-		console.log(this.props.id.id);
 		if (!window.localStorage.getItem('token')) {
-			this.props.loadGuest();
+			this.props.loadCart();
 			console.log(this.props);
-			// console.log(JSON.parse(localStorage.getItem('guest')));
 		} else {
 			let cartId = window.localStorage.getItem('cartId');
 			if (!cartId || cartId === undefined) {
 				cartId = JSON.stringify(this.props.id.cart.id);
 				window.localStorage.setItem('cartId', cartId);
 			}
-			this.props.loadCart(JSON.parse(cartId));
+
+			this.props.loadCart(cartId);
 		}
 	}
 
@@ -29,6 +28,7 @@ export class UserCart extends React.Component {
 			let total = cardQty * cardPrice;
 			return total.toFixed(2);
 		};
+		console.log(this.props);
 		return (
 			<div className='cart'>
 				<h2>
@@ -170,7 +170,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch, { history }) => {
 	return {
-		loadGuest: () => dispatch(fetchGCart()),
 		loadCart: (id) => dispatch(fetchCart(id)),
 		deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
 	};

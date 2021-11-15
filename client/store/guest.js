@@ -1,8 +1,6 @@
 //ADD CARD TO GUEST CARD THUNK
 //REMOVE CARD TO GUEST CARD THUNK
 
-import axios from 'axios';
-
 const SET_GUEST_CART = 'SET_GUEST_CART';
 const ADD_TO_GUEST_CART = 'ADD_TO_GUEST_CART';
 const REMOVE_FROM_GUEST_CART = 'REMOVE_FROM_GUEST_CART';
@@ -42,6 +40,8 @@ export const fetchGCart = () => {
 		dispatch(setGCart(data));
 	};
 };
+
+export const addCardToGuest = () => {};
 
 export default function guestReducer(state = [], action) {
 	switch (action.type) {
