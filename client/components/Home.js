@@ -10,7 +10,7 @@ export class Home extends Component {
 	componentDidMount() {
 		this.props.getCards();
 		if (!this.props.guest) {
-			window.localStorage.setItem('guest', JSON.stringify([1]));
+			window.localStorage.setItem('guest', JSON.stringify({ cards: [] }));
 		}
 
 		// let guestCart = window.localStorage.getItem('guest');

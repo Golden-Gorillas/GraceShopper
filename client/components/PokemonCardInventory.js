@@ -105,10 +105,10 @@ async componentDidMount() {
 								<button
 									type='button'
 									onClick={() => {
-										if (!this.props.id.cart.id) {
-											addToCart('', card.id);
+										if (!this.props.id.id) {
+											addToCart('', card);
 										} else {
-											addToCart(cart.id, card.id);
+											addToCart(cart.id, card);
 										}
 									}}>
 									Add to Cart

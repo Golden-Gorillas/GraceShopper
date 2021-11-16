@@ -7,7 +7,6 @@ import cardsReducer from './pokemoncards';
 import cardReducer from './pokemoncard';
 import cartReducer from './usercart';
 import usersReducer from './users';
-// import guestReducer from './guest';
 import axios from 'axios';
 import filterReducer from './filterCards';
 //auth,
