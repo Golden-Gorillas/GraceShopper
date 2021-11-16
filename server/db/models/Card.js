@@ -34,4 +34,9 @@ const Card = db.define('card', {
   },
 });
 
+Card.beforeUpdate('userType', (user, options) => {
+  console.log('test');
+  console.log('USER: ->>>', user, ' \n OPTIONS: ->>>', options);
+});
+
 module.exports = Card;
