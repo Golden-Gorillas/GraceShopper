@@ -94,12 +94,17 @@ async function seed() {
   ]);
 
   pokemon.configure({ apiKey: 'f3d7da45-593f-4da9-bcd1-f27721f4bc63' });
+  const pokemonDataArray = [];
 
   console.log('Seeding from Pokemon API...');
-  for (let i = 1; i <= 102; i++) {
-    const pokemonApiCard = await pokemon.card.find(`base1-${i}`);
 
-    await Card.create({
+  for (let i = 1; i <= 102; i++) {
+    pokemonDataArray.push(pokemon.card.find(`base1-${i}`));
+  }
+
+  const promisedArray = await Promise.all(pokemonDataArray);
+  promisedArray.map((pokemonApiCard) => {
+    Card.create({
       name: pokemonApiCard.name,
       price: pokemonApiCard.cardmarket.prices.averageSellPrice,
       stock: Math.floor(Math.random() * 25),
@@ -108,7 +113,7 @@ async function seed() {
       rarity: pokemonApiCard.rarity,
       type: pokemonApiCard.types,
     });
-  }
+  });
 
   const cart1 = await Cart.create();
   const cart2 = await Cart.create();
