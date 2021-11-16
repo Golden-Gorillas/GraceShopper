@@ -82,7 +82,6 @@ export const removeSpecifiedCard = (cartId, cardId) => {
 				dispatch(removeCard(data));
 			} else {
 				const { data: card } = await axios.get(`/api/cards/${cardId}`);
-				console.log('token', token);
 				const filteredArr = token.cards.filter(
 					(pokemonCard) => pokemonCard.id != cardId
 				);
@@ -116,14 +115,24 @@ export const addCardToCart = (cartId, cardId) => {
 			} else {
 				const guestCart = token;
 				const { data: card } = await axios.get(`/api/cards/${cardId}`);
-				console.log(guestCart.cards);
-				if (guestCart.cards.includes(card)) {
-					card['cardsInCart']['quantity']++;
-				} else {
+				if (guestCart.cards.length == 0) {
 					const cardQuantity = { quantity: 1 };
 					card['cardsInCart'] = cardQuantity;
+					guestCart.cards.push(card);
+				} else {
+					guestCart.cards.map((singleCard) => {
+						console.log(singleCard.name, card.name);
+						if (singleCard.name == card.name) {
+							singleCard['cardsInCart']['quantity']++;
+						} else {
+							const cardQuantity = { quantity: 1 };
+							card['cardsInCart'] = cardQuantity;
+							guestCart.cards.push(card);
+						}
+						console.log(singleCard);
+						console.log(guestCart.cards);
+					});
 				}
-				guestCart.cards.push(card);
 				window.localStorage.setItem('guest', JSON.stringify(guestCart));
 				dispatch(addToCart(guestCart));
 			}

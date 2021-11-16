@@ -27,13 +27,11 @@ export class UserCart extends React.Component {
 	}
 
 	render() {
-		const { deleteCard } = this.props;
-		const { cart } = this.props || [];
+		const { deleteCard, cart } = this.props;
 		const priceQuantity = (cardQty, cardPrice) => {
 			let total = cardQty * cardPrice;
 			return total.toFixed(2);
 		};
-		console.log('guest', cart);
 		return (
 			<div className='cart'>
 				<h2>
@@ -148,7 +146,7 @@ export class UserCart extends React.Component {
 													})
 													.reduce((accum, next) => {
 														return (accum = accum + next);
-													})
+													}, 0)
 													.toFixed(2)}
 									</strong>
 								</center>
