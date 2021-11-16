@@ -10,98 +10,51 @@ import axios from 'axios';
 // if we have issues check props :)
 
 export class PokemonCards extends Component {
-<<<<<<< Updated upstream
-  constructor(props) {
-    super(props);
-    this.state = {
-      filter: []
-    };
-    this.filter = this.filter.bind(this)
-  }
-  componentDidMount() {
-    this.props.getCards();
-  }
-
-  filter(ways){
-    const {cards = []} = this.props
-    switch(ways){
-      case "RARITY":
-        const rarity = cards.filter(card => card.rarity === value)
-        break;
-      case "PRICE":
-        const sorted = cards.sort((card1, card2) => card1.price-card2.price)
-        this.setState({filter: sorted})
-        break;
-      case "DECENDINGPRICE":
-        const sortedx = cards.sort((card1, card2) => card2.price-card1.price)
-        this.setState({filter: sortedx})
-        break;
-      case "A-Z":
-        function compare( a, b ) {
-          if ( a.name < b.name ){
-            return -1;
-           }
-          if ( a.name > b.name ){
-            return 1;
-            }
-             return 0;
-        }
-        const sortedz = cards.sort(compare)
-        this.setState({filter: sortedz})
-        break;
-
-      default:
-        break;
-    }
-    console.log(this.state.filter)
-  }
-
-  render() {
-    const { id, addToCart } = this.props;
-    const cart = id.cart;
-    if (!this.props.cards) return <div>waiting</div>;
-    return (
-      <div>
-        <div>
-        <div>
-        <label>
-            {" "}
-            Filter Rarity
-            <select
-              onChange={(event) => {
-                this.filter(
-                  event.target.value
-                );
-              }}
-            >
-              <option value="Common">rarity</option>
-              <option value="Uncommon">rarity</option>
-              <option value="Rare">rarity</option>
-              <option value="Legendary">rarity</option>
-              <option value="PRICE">price</option>
-              <option value="DECENDINGPRICE">Decending</option>
-              <option value="A-Z">A-Z</option>
-            </select>
-          </label>
-      </div>
-        </div>
-        <h1>card list</h1>
-        <div className="cardsContainer">
-          {this.props.cards.map((card) => (
-            <div className="singleRowContainer" key={card.id}>
-              <Link className="nameLink" to={`/cards/${card.id}`}>
-                <h1 id="cardname">{card.name}</h1>
-              </Link>
-=======
 	constructor(props) {
 		super(props);
 		this.state = {
-			test: [],
+			filter: [],
 		};
+		this.filter = this.filter.bind(this);
 	}
 	componentDidMount() {
 		this.props.getCards();
 	}
+
+	filter(ways) {
+		const { cards = [] } = this.props;
+		switch (ways) {
+			case 'RARITY':
+				const rarity = cards.filter((card) => card.rarity === value);
+				break;
+			case 'PRICE':
+				const sorted = cards.sort((card1, card2) => card1.price - card2.price);
+				this.setState({ filter: sorted });
+				break;
+			case 'DECENDINGPRICE':
+				const sortedx = cards.sort((card1, card2) => card2.price - card1.price);
+				this.setState({ filter: sortedx });
+				break;
+			case 'A-Z':
+				function compare(a, b) {
+					if (a.name < b.name) {
+						return -1;
+					}
+					if (a.name > b.name) {
+						return 1;
+					}
+					return 0;
+				}
+				const sortedz = cards.sort(compare);
+				this.setState({ filter: sortedz });
+				break;
+
+			default:
+				break;
+		}
+		console.log(this.state.filter);
+	}
+
 	render() {
 		const { id, addToCart } = this.props;
 		const cart = id.cart;
@@ -109,7 +62,24 @@ export class PokemonCards extends Component {
 		return (
 			<div>
 				<div>
-					<Filter />
+					<div>
+						<label>
+							{' '}
+							Filter Rarity
+							<select
+								onChange={(event) => {
+									this.filter(event.target.value);
+								}}>
+								<option value='Common'>rarity</option>
+								<option value='Uncommon'>rarity</option>
+								<option value='Rare'>rarity</option>
+								<option value='Legendary'>rarity</option>
+								<option value='PRICE'>price</option>
+								<option value='DECENDINGPRICE'>Decending</option>
+								<option value='A-Z'>A-Z</option>
+							</select>
+						</label>
+					</div>
 				</div>
 				<h1>card list</h1>
 				<div className='cardsContainer'>
@@ -118,7 +88,6 @@ export class PokemonCards extends Component {
 							<Link className='nameLink' to={`/cards/${card.id}`}>
 								<h1 id='cardname'>{card.name}</h1>
 							</Link>
->>>>>>> Stashed changes
 
 							<p className='price'>
 								<strong>
@@ -138,7 +107,7 @@ export class PokemonCards extends Component {
 								<button
 									type='button'
 									onClick={() => {
-										if (!this.props.id.cart.id) {
+										if (!this.props.id.id) {
 											addToCart('', card.id);
 										} else {
 											addToCart(cart.id, card.id);

@@ -1,11 +1,11 @@
 import axios from 'axios';
+import { checkAuth } from './auth';
 
 const SET_CART = 'SET_CART';
 const REMOVE_CARD = 'REMOVE_CARD';
 const ADD_TO_CART = 'ADD_TO_CART';
 const SET_QUANTITY = 'SET_QUANTITY';
 const TOKEN = 'token';
-
 const setCart = (cart) => {
 	return {
 		type: SET_CART,
@@ -51,16 +51,15 @@ export const setQuantity = (cartId, cardId, quantity) => {
 export const fetchCart = (id) => {
 	return async (dispatch) => {
 		try {
-			const token = window.localStorage.getItem(TOKEN);
-			console.log('fetch cart', id, token);
-			if (token) {
+			const token = checkAuth();
+			if (typeof token == 'string') {
 				const { data } = await axios.get(`/api/carts/${id}`, {
 					headers: { authorization: token },
 				});
 				dispatch(setCart(data));
 			} else {
-				const guestData = window.localStorage.getItem('guest');
-				dispatch(setCart(JSON.parse(guestData)));
+				console.log('fetchCart', token);
+				dispatch(setCart(token));
 			}
 		} catch (error) {
 			console.error(error);
@@ -71,10 +70,30 @@ export const fetchCart = (id) => {
 export const removeSpecifiedCard = (cartId, cardId) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios.put(`/api/carts/${cartId}`, {
-				delete: cardId,
-			});
-			dispatch(removeCard(data));
+			const token = checkAuth();
+			if (typeof token === 'string') {
+				const { data } = await axios.put(
+					`/api/carts/${cartId}`,
+					{
+						delete: cardId,
+					},
+					{ headers: { authorization: token } }
+				);
+				dispatch(removeCard(data));
+			} else {
+				const { data: card } = await axios.get(`/api/cards/${cardId}`);
+				console.log('token', token);
+				const filteredArr = token.cards.filter(
+					(pokemonCard) => pokemonCard.id != cardId
+				);
+				token.cards = filteredArr;
+				console.log('token2', token);
+
+				window.localStorage.setItem('guest', JSON.stringify(token));
+				dispatch(removeCard(card));
+				dispatch(setCart(token));
+				//Can I do this?
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -84,17 +103,29 @@ export const removeSpecifiedCard = (cartId, cardId) => {
 export const addCardToCart = (cartId, cardId) => {
 	return async (dispatch) => {
 		try {
-			const token = window.localStorage.getItem(TOKEN);
-			if (token) {
-				const { data } = await axios.put(`/api/carts/${cartId}`, {
-					add: cardId,
-				});
+			const token = checkAuth();
+			if (typeof token == 'string') {
+				const { data } = await axios.put(
+					`/api/carts/${cartId}`,
+					{
+						add: cardId,
+					},
+					{ headers: { authorization: token } }
+				);
 				dispatch(addToCart(data));
 			} else {
-				const guestData = JSON.parse(window.localStorage.getItem('guest'));
+				const guestCart = token;
 				const { data: card } = await axios.get(`/api/cards/${cardId}`);
-				guestData.push(card);
-				dispatch(addToCart(guestData));
+				console.log(guestCart.cards);
+				if (guestCart.cards.includes(card)) {
+					card['cardsInCart']['quantity']++;
+				} else {
+					const cardQuantity = { quantity: 1 };
+					card['cardsInCart'] = cardQuantity;
+				}
+				guestCart.cards.push(card);
+				window.localStorage.setItem('guest', JSON.stringify(guestCart));
+				dispatch(addToCart(guestCart));
 			}
 		} catch (error) {
 			console.error(error);
@@ -105,7 +136,6 @@ export const addCardToCart = (cartId, cardId) => {
 export default function cartReducer(state = [], action) {
 	switch (action.type) {
 		case SET_CART:
-			console.log(action);
 			return action.cart;
 		case REMOVE_CARD:
 			return action.cart;

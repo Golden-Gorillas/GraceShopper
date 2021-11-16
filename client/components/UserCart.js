@@ -1,16 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchGCart } from '../store/guest';
 import { Link } from 'react-router-dom';
 import { fetchCart, removeSpecifiedCard, setQuantity } from '../store/usercart';
+import { me } from '../store/auth';
 
 export class UserCart extends React.Component {
 	componentDidMount() {
 		//Guest Token
 		//Guest Cart
+
+		// this.props.checkAuth();
+		// console.log('auth', this.props);
+
 		if (!window.localStorage.getItem('token')) {
+			console.log('guest load cart');
 			this.props.loadCart();
-			console.log(this.props);
 		} else {
 			let cartId = window.localStorage.getItem('cartId');
 			if (!cartId || cartId === undefined) {
@@ -23,12 +27,13 @@ export class UserCart extends React.Component {
 	}
 
 	render() {
-		const { cart, deleteCard } = this.props;
+		const { deleteCard } = this.props;
+		const { cart } = this.props || [];
 		const priceQuantity = (cardQty, cardPrice) => {
 			let total = cardQty * cardPrice;
 			return total.toFixed(2);
 		};
-		console.log(this.props);
+		console.log('guest', cart);
 		return (
 			<div className='cart'>
 				<h2>
@@ -109,7 +114,12 @@ export class UserCart extends React.Component {
 													</button>
 												</form>
 												<br />
-												<button onClick={() => deleteCard(cart.id, card.id)}>
+												<button
+													onClick={() =>
+														!this.props.id.id
+															? deleteCard('', card.id)
+															: deleteCard(cart.id, card.id)
+													}>
 													Delete from cart
 												</button>
 											</td>
@@ -170,6 +180,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch, { history }) => {
 	return {
+		// checkAuth: () => dispatch(me()),
 		loadCart: (id) => dispatch(fetchCart(id)),
 		deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
 	};
