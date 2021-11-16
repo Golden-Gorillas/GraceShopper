@@ -179,6 +179,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch, { history }) => {
 	return {
 		// checkAuth: () => dispatch(me()),
+		updateQuantity: (cartId, cardId, qty) =>
+			dispatch(setQuantity(cartId, cardId, qty)),
 		loadCart: (id) => dispatch(fetchCart(id)),
 		deleteCard: (cartId, card) => dispatch(removeSpecifiedCard(cartId, card)),
 	};
