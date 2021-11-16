@@ -37,11 +37,23 @@ const _setQuantity = (cart) => {
 export const setQuantity = (cartId, cardId, quantity) => {
 	return async (dispatch) => {
 		try {
-			const { data } = await axios.put(`/api/cardInCarts`, {
-				data: { cartId, cardId, quantity },
-			});
-			console.log(data);
-			dispatch(_setQuantity(data));
+			const token = checkAuth();
+			if (typeof token == 'string') {
+				const { data } = await axios.put(`/api/cardInCarts`, {
+					data: { cartId, cardId, quantity },
+				});
+				dispatch(_setQuantity(data));
+			} else {
+				const guestCart = token;
+				guestCart.cards.map((pokemonCard) => {
+					if (cardId === pokemonCard.id) {
+						pokemonCard['cardsInCart']['quantity'] = quantity;
+					}
+					return pokemonCard;
+				});
+				window.localStorage.setItem('guest', JSON.stringify(guestCart));
+				dispatch(_setQuantity(guestCart));
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -58,7 +70,6 @@ export const fetchCart = (id) => {
 				});
 				dispatch(setCart(data));
 			} else {
-				console.log('fetchCart', token);
 				dispatch(setCart(token));
 			}
 		} catch (error) {
@@ -81,16 +92,16 @@ export const removeSpecifiedCard = (cartId, cardId) => {
 				);
 				dispatch(removeCard(data));
 			} else {
-				const { data: card } = await axios.get(`/api/cards/${cardId}`);
+				// const { data: card } = await axios.get(`/api/cards/${cardId}`);
 				const filteredArr = token.cards.filter(
 					(pokemonCard) => pokemonCard.id != cardId
 				);
 				token.cards = filteredArr;
-				console.log('token2', token);
 
 				window.localStorage.setItem('guest', JSON.stringify(token));
-				dispatch(removeCard(card));
-				dispatch(setCart(token));
+				dispatch(removeCard(token));
+				// dispatch(setCart(token));
+
 				//Can I do this?
 			}
 		} catch (error) {
@@ -99,40 +110,38 @@ export const removeSpecifiedCard = (cartId, cardId) => {
 	};
 };
 
-export const addCardToCart = (cartId, cardId) => {
+export const addCardToCart = (cartId, card) => {
 	return async (dispatch) => {
 		try {
+			console.log(card);
 			const token = checkAuth();
 			if (typeof token == 'string') {
 				const { data } = await axios.put(
 					`/api/carts/${cartId}`,
 					{
-						add: cardId,
+						add: card.id,
 					},
 					{ headers: { authorization: token } }
 				);
+				console.log('add', data);
 				dispatch(addToCart(data));
 			} else {
 				const guestCart = token;
-				const { data: card } = await axios.get(`/api/cards/${cardId}`);
-				if (guestCart.cards.length == 0) {
+				const cardsWeHave = guestCart.cards.map((innerCard) => innerCard.id);
+
+				if (cardsWeHave.includes(card.id)) {
+					guestCart.cards.map((pokemonCard) => {
+						if (card.id === pokemonCard.id) {
+							pokemonCard['cardsInCart']['quantity']++;
+						}
+						return pokemonCard;
+					});
+				} else {
 					const cardQuantity = { quantity: 1 };
 					card['cardsInCart'] = cardQuantity;
 					guestCart.cards.push(card);
-				} else {
-					guestCart.cards.map((singleCard) => {
-						console.log(singleCard.name, card.name);
-						if (singleCard.name == card.name) {
-							singleCard['cardsInCart']['quantity']++;
-						} else {
-							const cardQuantity = { quantity: 1 };
-							card['cardsInCart'] = cardQuantity;
-							guestCart.cards.push(card);
-						}
-						console.log(singleCard);
-						console.log(guestCart.cards);
-					});
 				}
+
 				window.localStorage.setItem('guest', JSON.stringify(guestCart));
 				dispatch(addToCart(guestCart));
 			}
