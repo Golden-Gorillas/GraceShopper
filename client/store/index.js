@@ -7,7 +7,6 @@ import cardsReducer from './pokemoncards';
 import cardReducer from './pokemoncard';
 import cartReducer from './usercart';
 import usersReducer from './users';
-// import guestReducer from './guest';
 import axios from 'axios';
 //auth,
 
@@ -26,7 +25,6 @@ const appReducer = combineReducers({
 	card: cardReducer,
 	cart: cartReducer,
 	users: usersReducer,
-	// guest: guestReducer,
 	auth,
 });
 

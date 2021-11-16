@@ -43,13 +43,13 @@ export const fetchGCart = () => {
 
 export const addCardToGuest = () => {};
 
-export default function guestReducer(state = [], action) {
-	switch (action.type) {
-		case SET_GUEST_CART:
-			// console.log(action.cart);
-			return action.cart;
+// // export default function guestReducer(state = [], action) {
+// // 	switch (action.type) {
+// // 		case SET_GUEST_CART:
+// // 			// console.log(action.cart);
+// // 			return action.cart;
 
-		default:
-			return state;
-	}
-}
+// // 		default:
+// // 			return state;
+// // 	}
+// }

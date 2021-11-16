@@ -3,6 +3,7 @@ import history from '../history';
 
 const TOKEN = 'token';
 const CARTID = 'cartId';
+const GUEST = 'guest';
 
 /**
  * ACTION TYPES
@@ -25,6 +26,7 @@ export const me = () => async (dispatch) => {
 				authorization: token,
 			},
 		});
+
 		return dispatch(setAuth(res.data));
 	}
 };
@@ -49,6 +51,15 @@ export const logout = () => {
 		type: SET_AUTH,
 		auth: {},
 	};
+};
+
+export const checkAuth = () => {
+	const token = window.localStorage.getItem(TOKEN);
+
+	if (!token) {
+		return JSON.parse(window.localStorage.getItem(GUEST));
+	}
+	return token;
 };
 
 /**
