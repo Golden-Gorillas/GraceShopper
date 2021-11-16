@@ -130,7 +130,10 @@ export const addCardToCart = (cartId, card) => {
 
         if (cardsWeHave.includes(card.id)) {
           guestCart.cards.map((pokemonCard) => {
-            if (card.id === pokemonCard.id) {
+            if (
+              card.id === pokemonCard.id &&
+              pokemonCard['cardsInCart']['quantity'] < card.stock
+            ) {
               pokemonCard['cardsInCart']['quantity']++;
             }
             return pokemonCard;
