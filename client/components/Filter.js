@@ -1,77 +1,53 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { filterCardsByRarity } from "../store/pokemoncards";
+import { setCardFilter } from "../store/filterCards";
 
 class Filter extends Component {
-  constructor(){
-    super();
-    this.state={
-      filter: []
-    }
-    this.filter = this.filter.bind(this)
-  }
 
-  filter(ways){
-    const {cards = []} = this.props
-    switch(ways){
-      case "RARITY":
-        break;
-      case "PRICE":
-        const sorted = cards.sort((card1, card2) => card1.price-card2.price)
-        this.setState({filter: sorted})
-        break;
-      case "DECENDINGPRICE":
-        const sortedx = cards.sort((card1, card2) => card2.price-card1.price)
-        this.setState({filter: sortedx})
-        break;
-      case "A-Z":
-        function compare( a, b ) {
-          if ( a.name < b.name ){
-            return -1;
-           }
-          if ( a.name > b.name ){
-            return 1;
-            }
-             return 0;
-        }
-        const sortedz = cards.sort(compare)
-        this.setState({filter: sortedz})
-        break;
 
-      default:
-        break;
-    }
-    console.log(ways)
-  }
+
+
+
   render() {
     return (
-      <div>
+        <div>
+        <div>
         <label>
             {" "}
-            Filter Rarity
+            Filter by Rarity
             <select
               onChange={(event) => {
-                this.filter(
-                  event.target.value
+                this.props.cardFilter(
+                  event.target.value, this.props.cards
                 );
               }}
             >
-              <option value="RARITY">rarity</option>
-              <option value="PRICE">price</option>
-              <option value="DECENDINGPRICE">Decending</option>
-              <option value="A-Z">A-Z</option>
+              <option value="all">Show All Cards</option>
+              <option value="Common">Common</option>
+              <option value="Uncommon">Uncommon</option>
+              <option value="Rare">Rare</option>
+              <option value="Legendary">Legendary</option>
             </select>
           </label>
+      </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  cards: state.cards.cards,
-  filteredCards: state.filteredCards,
-  rarity: state.cards.rarity
+   cards: state.cards,
+   filteredCards: state.filter.cards
+
 });
 
+const mapDispatchToProps = dispatch => {
+  return {
+    cardFilter: (rarity, cards) => {
+      return dispatch(setCardFilter(rarity, cards))
+    }
+  }
+}
 
-export default connect(mapStateToProps)(Filter);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

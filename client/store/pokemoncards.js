@@ -74,15 +74,16 @@ export const addCard = (card, history) => {
   };
 };
 
-// export const filterCardsByRarity = (rarity) => (dispatch) => {
-//   console.log(rarity);
-//   dispatch({
+// const SHOW_ALL = "SHOW_ALL";
+// const SHOW_LEGENDARY = "SHOW_LEGENDARY";
+
+// export const filter = (rarity) => ({
+
 //     type: FILTER_CARDS_BY_RARITY,
 //     payload: {
 //       rarity: rarity,
 //     },
-//   });
-// };
+// })
 
 // const initialState = { cards:[], filteredCards: [], rarity: ""}
 //reducer
