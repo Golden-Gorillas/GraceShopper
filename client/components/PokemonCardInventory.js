@@ -108,9 +108,9 @@ export class PokemonCards extends Component {
 									type='button'
 									onClick={() => {
 										if (!this.props.id.id) {
-											addToCart('', card.id);
+											addToCart('', card);
 										} else {
-											addToCart(cart.id, card.id);
+											addToCart(cart.id, card);
 										}
 									}}>
 									Add to Cart
@@ -132,7 +132,7 @@ const stateprops = (state) => {
 };
 const dispatchprops = (dispatch) => ({
 	getCards: () => dispatch(fetchCards()),
-	addToCart: (cartId, cardId) => dispatch(addCardToCart(cartId, cardId)),
+	addToCart: (cartId, card) => dispatch(addCardToCart(cartId, card)),
 });
 
 export default connect(stateprops, dispatchprops)(PokemonCards);

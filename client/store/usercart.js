@@ -110,22 +110,23 @@ export const removeSpecifiedCard = (cartId, cardId) => {
 	};
 };
 
-export const addCardToCart = (cartId, cardId) => {
+export const addCardToCart = (cartId, card) => {
 	return async (dispatch) => {
 		try {
+			console.log(card);
 			const token = checkAuth();
 			if (typeof token == 'string') {
 				const { data } = await axios.put(
 					`/api/carts/${cartId}`,
 					{
-						add: cardId,
+						add: card.id,
 					},
 					{ headers: { authorization: token } }
 				);
+				console.log('add', data);
 				dispatch(addToCart(data));
 			} else {
 				const guestCart = token;
-				const { data: card } = await axios.get(`/api/cards/${cardId}`);
 				const cardsWeHave = guestCart.cards.map((innerCard) => innerCard.id);
 
 				if (cardsWeHave.includes(card.id)) {
