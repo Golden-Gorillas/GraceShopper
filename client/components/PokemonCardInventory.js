@@ -4,35 +4,34 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCards } from '../store/pokemoncards';
 import { addCardToCart } from '../store/usercart';
+import { setCardFilter } from "../store/filterCards";
 import axios from 'axios';
-// import Filter from './Filter';
+import Filter from './Filter';
 
-// if we have issues check props :)
+
 
 export class PokemonCards extends Component {
-<<<<<<< Updated upstream
   constructor(props) {
     super(props);
     this.state = {
-      filter: []
-    };
-    this.filter = this.filter.bind(this)
+      filter: [],
+    }
+    this.sort = this.sort.bind(this)
   }
-  componentDidMount() {
-    this.props.getCards();
+async componentDidMount() {
+    await this.props.getCards();
+    this.props.cardFilter('all', this.props.cards)
   }
 
-  filter(ways){
-    const {cards = []} = this.props
+
+  sort(ways){
+    const cards = this.props.filteredCards
     switch(ways){
-      case "RARITY":
-        const rarity = cards.filter(card => card.rarity === value)
-        break;
       case "PRICE":
         const sorted = cards.sort((card1, card2) => card1.price-card2.price)
         this.setState({filter: sorted})
         break;
-      case "DECENDINGPRICE":
+      case "DESCENDINGPRICE":
         const sortedx = cards.sort((card1, card2) => card2.price-card1.price)
         this.setState({filter: sortedx})
         break;
@@ -53,72 +52,40 @@ export class PokemonCards extends Component {
       default:
         break;
     }
-    console.log(this.state.filter)
+    console.log(this.state)
   }
+
 
   render() {
     const { id, addToCart } = this.props;
     const cart = id.cart;
-    if (!this.props.cards) return <div>waiting</div>;
+    if (!this.props.filteredCards && !this.props.cards) return <div>waiting</div>;
     return (
       <div>
-        <div>
-        <div>
+        <Filter />
         <label>
             {" "}
-            Filter Rarity
+            Sort
             <select
               onChange={(event) => {
-                this.filter(
+                this.sort(
                   event.target.value
                 );
               }}
             >
-              <option value="Common">rarity</option>
-              <option value="Uncommon">rarity</option>
-              <option value="Rare">rarity</option>
-              <option value="Legendary">rarity</option>
-              <option value="PRICE">price</option>
-              <option value="DECENDINGPRICE">Decending</option>
+              <option value="PRICE">Ascending price</option>
+              <option value="DESCENDINGPRICE">Descending Price</option>
               <option value="A-Z">A-Z</option>
             </select>
           </label>
-      </div>
-        </div>
+
         <h1>card list</h1>
         <div className="cardsContainer">
-          {this.props.cards.map((card) => (
+          {this.props.filteredCards.map((card) => (
             <div className="singleRowContainer" key={card.id}>
               <Link className="nameLink" to={`/cards/${card.id}`}>
                 <h1 id="cardname">{card.name}</h1>
               </Link>
-=======
-	constructor(props) {
-		super(props);
-		this.state = {
-			test: [],
-		};
-	}
-	componentDidMount() {
-		this.props.getCards();
-	}
-	render() {
-		const { id, addToCart } = this.props;
-		const cart = id.cart;
-		if (!this.props.cards) return <div>waiting</div>;
-		return (
-			<div>
-				<div>
-					<Filter />
-				</div>
-				<h1>card list</h1>
-				<div className='cardsContainer'>
-					{this.props.cards.map((card) => (
-						<div className='singleRowContainer' key={card.id}>
-							<Link className='nameLink' to={`/cards/${card.id}`}>
-								<h1 id='cardname'>{card.name}</h1>
-							</Link>
->>>>>>> Stashed changes
 
 							<p className='price'>
 								<strong>
@@ -159,11 +126,13 @@ const stateprops = (state) => {
 	return {
 		id: state.auth,
 		cards: state.cards,
+    filteredCards: state.filter.cards
 	};
 };
 const dispatchprops = (dispatch) => ({
 	getCards: () => dispatch(fetchCards()),
 	addToCart: (cartId, cardId) => dispatch(addCardToCart(cartId, cardId)),
+  cardFilter: (rarity, cards) => dispatch(setCardFilter(rarity, cards))
 });
 
 export default connect(stateprops, dispatchprops)(PokemonCards);

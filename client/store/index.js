@@ -9,6 +9,7 @@ import cartReducer from './usercart';
 import usersReducer from './users';
 // import guestReducer from './guest';
 import axios from 'axios';
+import filterReducer from './filterCards';
 //auth,
 
 let middleware = [
@@ -26,6 +27,7 @@ const appReducer = combineReducers({
 	card: cardReducer,
 	cart: cartReducer,
 	users: usersReducer,
+	filter: filterReducer,
 	// guest: guestReducer,
 	auth,
 });
