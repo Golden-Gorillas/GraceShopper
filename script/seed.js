@@ -45,7 +45,7 @@ async function seed() {
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/223073.jpg',
       type: ['Fire'],
-      rarity: 'legendary',
+      rarity: 'Legendary',
     }),
     Card.create({
       name: 'Mew VMAX',
@@ -54,7 +54,7 @@ async function seed() {
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/253177.jpg',
       type: ['Psychic'],
-      rarity: 'legendary',
+      rarity: 'Legendary',
     }),
     Card.create({
       name: 'Rayquaza GX',
@@ -63,7 +63,7 @@ async function seed() {
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/170938.jpg',
       type: ['Dragon'],
-      rarity: 'legendary',
+      rarity: 'Legendary',
     }),
     Card.create({
       name: 'Charizard',
@@ -72,7 +72,7 @@ async function seed() {
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/250320.jpg',
       type: ['Fire'],
-      rarity: 'legendary',
+      rarity: 'Legendary',
     }),
     Card.create({
       name: 'Mewtwo EX',
@@ -81,7 +81,7 @@ async function seed() {
       imageUrl:
         'https://product-images.tcgplayer.com/fit-in/400x558/250339.jpg',
       type: ['Psychic'],
-      rarity: 'legendary',
+      rarity: 'Legendary',
     }),
     Card.create({
       name: 'Pikachu Star',
@@ -89,7 +89,7 @@ async function seed() {
       description: '',
       imageUrl: 'https://product-images.tcgplayer.com/fit-in/400x558/88111.jpg',
       type: ['Electric'],
-      rarity: 'legendary',
+      rarity: 'Legendary',
     }),
   ]);
 
