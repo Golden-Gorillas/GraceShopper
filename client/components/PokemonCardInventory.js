@@ -27,6 +27,7 @@ export class PokemonCards extends Component {
 		return (
 			<div>
 				<div>
+					<Filter />
 				</div>
 				<h1>card list</h1>
 				<div className='cardsContainer'>
