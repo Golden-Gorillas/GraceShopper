@@ -9,33 +9,57 @@ export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
 			<h1 className='navText'>Golden Gorillas Pokemon Card Store</h1>
 			<nav>
 				{!user ? (
-					<div>
+					<div className='navList'>
 						{/* The navbar will show these links before you log in */}
-						<Link to='/'>Home</Link>
-						<Link to='/cards'>Card Inventory</Link>
-						<Link to='/cart'>Cart</Link>
-						<Link to='/login'>Login</Link>
-						<Link to='/signup'>Sign Up</Link>
+						<Link className='Link' to='/'>
+							Home
+						</Link>
+						<Link className='Link' to='/cards'>
+							Card Inventory
+						</Link>
+						<Link className='Link' to='/cart'>
+							Cart
+						</Link>
+						<Link className='Link' to='/login'>
+							Login
+						</Link>
+						<Link className='Link' to='/signup'>
+							Sign Up
+						</Link>
 						{/* <Link to='/cards'>Card Inventory</Link> */}
 					</div>
 				) : user === 'admin' ? (
-					<div>
+					<div className='navList'>
 						{/* The navbar will show these links to admins */}
-						<Link to='/'>Home</Link>
-						<Link to='/cards'>Card Inventory</Link>
-						<Link to='/cart'>Cart</Link>
-						<Link to='/admin'>Admin</Link>
-						<a href='#' onClick={handleClick}>
+						<Link className='Link' to='/'>
+							Home
+						</Link>
+						<Link className='Link' to='/cards'>
+							Card Inventory
+						</Link>
+						<Link className='Link' to='/cart'>
+							Cart
+						</Link>
+						<Link className='Link' to='/admin'>
+							Admin
+						</Link>
+						<a className='Link' href='#' onClick={handleClick}>
 							Logout
 						</a>
 					</div>
 				) : (
-					<div>
+					<div className='navList'>
 						{/* The navbar will show these links after you log in */}
-						<Link to='/'>Home</Link>
-						<Link to='/cards'>Card Inventory</Link>
-						<Link to='/cart'>Cart</Link>
-						<a href='#' onClick={handleClick}>
+						<Link className='Link' to='/'>
+							Home
+						</Link>
+						<Link className='Link' to='/cards'>
+							Card Inventory
+						</Link>
+						<Link className='Link' to='/cart'>
+							Cart
+						</Link>
+						<a className='Link' href='#' onClick={handleClick}>
 							Logout
 						</a>
 						<h3>Welcome, {userEmail} </h3>
