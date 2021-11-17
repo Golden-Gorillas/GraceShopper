@@ -42,7 +42,13 @@ class SingleCardView extends Component {
 					<button
 						className='buyadd'
 						type='button'
-						onClick={() => addToCart(cart.id, id)}>
+						onClick={() => {
+							if (!this.props.id.id) {
+								addToCart('', this.props.card);
+							} else {
+								addToCart(cart.id, this.props.card);
+							}
+						}}>
 						Add/Buy
 					</button>
 				</div>

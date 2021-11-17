@@ -45,7 +45,7 @@ class Checkout extends Component {
 	}
 	reRender(choice) {
 		switch (choice) {
-			case 'Total':
+			case 'Total':{
 				const total = this.props.cart.cards
 					.map((card) => card.price * card.cardsInCart.quantity)
 					.reduce((a, b) => a + b)
@@ -53,6 +53,7 @@ class Checkout extends Component {
 
 				this.setState({ total });
 				break;
+			}	
 			default:
 				this.setState({ re: !this.state.re });
 				break;
@@ -174,7 +175,7 @@ class Checkout extends Component {
 						<h3>Payment</h3>
 						{console.log(this.props)}
 						{this.state.re ? (
-							<StripeContainer price={this.state.total} product={cart} />
+							<StripeContainer price={this.state.total} email={email}product={cart} />
 						) : null}
 					</div>
 				</div>
