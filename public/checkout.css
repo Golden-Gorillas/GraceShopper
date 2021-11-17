@@ -1,52 +1,98 @@
-body {
-    font-family: Arial, Helvetica;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+.CheckoutBody{
+  background-color: whitesmoke;
+  border:2px solid black;
+  display: flex;
+
+}
+
+.checkoutPrice{
+  border-right: 2px solid salmon;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+}
+#price{
+  color:green;
+}
+.ContainerCustomerInfo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
   
-.ContainerCustomerInfo{
-      display:flex;
-      justify-content: center;
-      text-align: center;
-      padding:5px
-  }
-.CustomerFName{
-    padding:5px;
-  }
-.CustomerLName{
-    padding:5px;
 }
-.CustomerEmail{
-    padding:5px;
+.customerContainerInfo{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px;
+}
+.CustomerFName {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.CustomerLName {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.CustomerEmail {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
-.ContainerShippingInfo{
-    display:flex;
-    justify-content: center;
-    text-align: center;
-    padding:5px
+.ContainerShippingInfo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+  
 }
-.CustomerAddress{
-    padding:2px
+.CustomerAddress {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
 }
-.CustomerCountry{
-    padding:2px
+.CustomerCountry {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+}
+.CustomerCT {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+}
+.CustomerState {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+}
+.CustomerZipcode {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SubmitB {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+}
+
+.PayWithCard{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
 }
-.CustomerCT{
-    padding:2px
-}
-.CustomerState{
-    padding:2px
-}
-.CustomerZipcode{
-    padding:2px
-}
-.SubmitB{
-    display:flex;
-    justify-content: center;
-    text-align: center;
-    padding:5px
+
+@media only screen and (max-width: 600px) {
+  .ContainerCustomerInfo{flex-direction: column;}
+  .ContainerShippingInfo{flex-direction: column;}
 }
