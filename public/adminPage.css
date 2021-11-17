@@ -28,6 +28,7 @@
   align-items: center;
   width: 90%;
   margin-top: 20px;
+  background-color: white;
 }
 
 .adminCard {
@@ -95,3 +96,4 @@
   justify-content: center;
   text-align: center;
 }
+

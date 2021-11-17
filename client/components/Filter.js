@@ -5,9 +5,6 @@ import { setCardFilter } from "../store/filterCards";
 class Filter extends Component {
 
 
-
-
-
   render() {
     return (
         <div>
