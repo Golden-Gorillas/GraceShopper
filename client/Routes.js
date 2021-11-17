@@ -11,6 +11,7 @@ import Admin from './components/Admin';
 import AdminEditCard from './components/AdminEditCard';
 import AdminAddCard from './components/AdminAddCard';
 import Checkout from './components/Checkout';
+import Thankyou from './components/Thankyou';
 
 /**
  * COMPONENT
@@ -34,6 +35,7 @@ class Routes extends Component {
 					<Route exact path='/admin' component={Admin} />
 					<Route exact path='/admin/cards/add' component={AdminAddCard} />
 					<Route exact path='/admin/cards/:id' component={AdminEditCard} />
+					<Route exact path='/thankyou' component={Thankyou}/>
 				</Switch>
 			</div>
 		);

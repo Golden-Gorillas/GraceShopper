@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import { emptyCart } from '../store/usercart';
-
+import { Redirect } from 'react-router';
+import Thankyou from './Thankyou';
 const PUBLIC_KEY =
 	'pk_test_51JvSqJLOSRd631P9xi33Di1YywXZ1WnSLmbJ77NM9K0eF5wXWvX2uHNLrK3UO2VNskjo2sojffSJBs5ZUAgQrrB300eEnHMpW5';
 
@@ -15,7 +15,14 @@ const stripePromise = loadStripe(PUBLIC_KEY);
 export class StripeContainer extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			success: false
+		}
 		this.onToken = this.onToken.bind(this);
+		this.redirectpage = this.redirectpage.bind(this)
+	}
+	redirectpage(){
+		this.setState({success : !this.state.success})
 	}
 	async onToken(token) {
 		const { product, price } = this.props;
@@ -29,23 +36,21 @@ export class StripeContainer extends Component {
 		const { status } = data;
 		console.log(data);
 		if (status === 'success') {
-			toast('Success! check email thank you for your purchase', {
-				type: 'success',
-			});
 			this.props.clearCart(this.props.product);
+			this.redirectpage()
+			
 		} else {
-			toast('Failure, something went wrong ', { type: 'error' });
+			alert(" Error with payment")
 		}
 	}
 
 	render() {
-		const { price } = this.props;
-		if (price) {
-			toast('Success! check email thank you for your purchase', {
-				type: 'success',
-			});
-		}
+		const { success } = this.state
+		const { price, email } = this.props;
+		
 		return (
+			<>
+			{ !success ?
 			<StripeCheckout
 				stripeKey={PUBLIC_KEY}
 				token={(res) => this.onToken(res)}
@@ -53,7 +58,10 @@ export class StripeContainer extends Component {
 				shippingAddress
 				price={price * 100}
 				name='Golden Gorillas'
-			/>
+			/>: 
+			 <Redirect push to={{ pathname:"/thankyou" , email }}/>
+			}
+			</>
 		);
 	}
 }
