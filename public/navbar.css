@@ -1,0 +1,62 @@
+.Link {
+  display: flex;
+  width: 150px;
+  line-height: 20px;
+  background: orangered;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+}
+
+.Link:before,
+.Link:after {
+  position: absolute;
+  content: '';
+  transition: all 0.5s;
+}
+
+.Link:before {
+  border-bottom: 2px solid yellow;
+  border-left: 2px solid yellow;
+  width: 10%;
+  height: 33%;
+  left: -10px;
+  bottom: -10px;
+}
+
+.Link:after {
+  border-top: 2px solid yellow;
+  border-right: 2px solid yellow;
+  width: 10%;
+  height: 33%;
+  top: -10px;
+  right: -10px;
+}
+
+.Link:hover:before {
+  width: 112%;
+  height: 140%;
+}
+
+.Link:hover:after {
+  width: 112%;
+  height: 140%;
+}
+
+.guest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Link:hover {
+  transform: scale(1.05);
+}

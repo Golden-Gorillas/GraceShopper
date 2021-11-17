@@ -1,8 +1,15 @@
+.background {
+  background-color: white;
+}
+
 .adminTop {
+  position: relative;
+  top: -8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .adminHeader {
@@ -28,7 +35,6 @@
   align-items: center;
   width: 90%;
   margin-top: 20px;
-  background-color: white;
 }
 
 .adminCard {
@@ -39,6 +45,23 @@
   align-content: center;
   justify-content: center;
   text-align: center;
+  border: 2px solid gray;
+  border-radius: 25px;
+  margin: 25px;
+  transition: 0.5s;
+}
+
+.adminCard:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px lightblue;
+  border: 2px solid lightblue;
+}
+
+.adminCard:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px lightblue;
+  text-shadow: 0 0 20px lightblue;
+  border: 2px solid lightblue;
 }
 
 .adminCard img {
@@ -96,4 +119,3 @@
   justify-content: center;
   text-align: center;
 }
-
