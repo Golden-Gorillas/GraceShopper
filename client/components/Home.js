@@ -23,14 +23,14 @@ export class Home extends Component {
     let count = 0;
     return (
       <div className="homeContainer">
-        <div className="banner">
-          <div className="bannerText">
-            <h1>Featured Legendary Cards!</h1>
+        <div className="banner2">
+          <div className="bannerInner">
+            <h1 className = "inventory Header">Featured Legendary Cards!</h1>
           </div>
         </div>
         <div className="featuredCardsContainer">
           {cards
-            .filter((card) => card.rarity === 'legendary')
+            .filter((card) => card.rarity === 'Legendary')
             .map((card) => {
               if (count < 5) {
                 count++;
@@ -39,7 +39,7 @@ export class Home extends Component {
                     <Link to={`/cards/${card.id}`}>
                       <img src={card.imageUrl} />
                       <div className="cardDetails">
-                        <p>{card.name}</p>
+                        <strong>{card.name}</strong>
                         <p>${card.price}</p>
                       </div>
                     </Link>
