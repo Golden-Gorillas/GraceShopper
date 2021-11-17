@@ -51,7 +51,7 @@
   height: 140%;
 }
 
-.guest {
+.navList {
   display: flex;
   flex-direction: row;
   justify-content: center;
