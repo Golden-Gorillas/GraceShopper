@@ -35,7 +35,7 @@ label {
 /* nav styling */
 
 nav a {
-  display: inline-block;
+  display: flex;
   margin: 1em;
   color: white;
   font-family: 'Nunito', sans-serif;
