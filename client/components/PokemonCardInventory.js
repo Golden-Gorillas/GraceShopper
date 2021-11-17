@@ -58,60 +58,71 @@ export class PokemonCards extends Component {
     if (!this.props.filteredCards && !this.props.cards)
       return <div>waiting</div>;
     return (
-      <div>
-        <Filter />
-        <label>
-          {' '}
-          Sort
-          <select
-            onChange={(event) => {
-              this.sort(event.target.value);
-            }}
-          >
-            <option value="PRICE">Ascending price</option>
-            <option value="DESCENDINGPRICE">Descending Price</option>
-            <option value="A-Z">A-Z</option>
-          </select>
-        </label>
-
-        <h1>card list</h1>
-        <div className="cardsContainer">
-          {this.props.filteredCards.map((card) => (
-            <div className="singleRowContainer" key={card.id}>
-              <Link className="nameLink" to={`/cards/${card.id}`}>
-                <h1 id="cardname">{card.name}</h1>
-              </Link>
-
-              <p className="price">
-                <strong>
-                  In stock:{' '}
-                  {card.stock < 5 ? (
-                    <font color="red"> {card.stock} </font>
-                  ) : (
-                    <font color="green">{card.stock} </font>
-                  )}
-                </strong>{' '}
-                <br />
-                <strong>Price: </strong>$ {card.price.toFixed(2)}
-              </p>
-              <img className="card" src={card.imageUrl} />
-              <br />
-              <div className="buttonMain">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!this.props.id.id) {
-                      addToCart('', card);
-                    } else {
-                      addToCart(cart.id, card);
-                    }
+      <div className="homeContainer">
+        <div className="banner2">
+          <div class="bannerInner">
+            <div className="bannerText">
+              <h1 className="inventoryBannerHeader">View our inventory</h1>
+            </div>
+            <div class="filterHeader">
+              <Filter />
+              <label>
+                {' '}
+                Sort
+                <select
+                  onChange={(event) => {
+                    this.sort(event.target.value);
                   }}
                 >
-                  Add to Cart
-                </button>
-              </div>
+                  <option value="PRICE">Ascending price</option>
+                  <option value="DESCENDINGPRICE">Descending Price</option>
+                  <option value="A-Z">A-Z</option>
+                </select>
+              </label>
             </div>
-          ))}
+          </div>
+        </div>
+        <div className="mainContainer">
+          <div className="cardsContainer">
+            {this.props.filteredCards.map((card) => (
+              <div className="singleRowContainer" key={card.id}>
+                <Link className="nameLink" to={`/cards/${card.id}`}>
+                  <h1 id="cardname">{card.name}</h1>
+                </Link>
+
+                <p className="price">
+                  <strong> Rarity: </strong> {card.rarity}
+                  <br />
+                  <strong>
+                    In stock:{' '}
+                    {card.stock < 5 ? (
+                      <font color="red"> {card.stock} </font>
+                    ) : (
+                      <font color="green">{card.stock} </font>
+                    )}
+                  </strong>{' '}
+                  <br />
+                  <strong>Price: </strong>$ {card.price.toFixed(2)}
+                </p>
+                <img className="card" src={card.imageUrl} />
+                <br />
+                <div className="buttonMain">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!this.props.id.id) {
+                        addToCart('', card);
+                      } else {
+                        addToCart(cart.id, card);
+                      }
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
