@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_CARDS, setCards, fetchCards } from './pokemoncards';
+
 
 const SET_CARD_FILTER = "SET_CARD_FILTER"
 
@@ -25,7 +25,6 @@ export default function filterReducer(state = { cards: [], rarity: "" }, action)
         } else {
           return card.rarity === action.payload.rarity
         }})
-      console.log(" filtered cards", filteredCards)
       return {...state, cards: filteredCards}
     }
     default:
