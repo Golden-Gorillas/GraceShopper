@@ -8,7 +8,9 @@ export default class Thankyou extends Component{
         const {email} = this.props
         return(
         <div>
-            <h1> Thank You For Your Purchase {email}</h1>
+            <h1> Thank You For Your Purchase </h1>
+            <img src="GoldenGorLOGO.png" />
+
         </div>
         )
     }

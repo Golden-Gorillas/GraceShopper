@@ -34,7 +34,7 @@ class SingleCardView extends Component {
             {description === '' ? tempDescription : description}
             <br />
             <br />
-            {rarity} {type}
+            Rarity: {rarity}, Type: {type}
           </div>
         </div>
         <div className="buyContainer">

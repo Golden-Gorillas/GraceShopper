@@ -126,6 +126,16 @@ form div {
 	align-items: center;
 }
 
+.banner2 {
+  color: black;
+  height: 20vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .featuredCardsContainer {
   padding-left: 5em;
   padding-right: 5em;
@@ -168,14 +178,17 @@ form div {
 /* START OF SINGLE CARD*/
 
 .singlecontainer {
-	display: flex;
-	flex-direction: column;
-	background-color: burlywood;
-	border-radius: 5% 10%;
-	padding: 5px;
-	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-	border: 5px solid white;
-	justify-content: center;
+  display: fixed;
+  flex-direction: column;
+  background-color: burlywood;
+  border-radius: 5% 10%;
+  padding: 5px;
+  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+  border: 5px solid white;
+  justify-content: center;
+  max-width:750px;
+  margin: auto;
+  position: relative;
 }
 .singlecardTitle {
 	display: flex;
@@ -274,11 +287,6 @@ button:active {
 }
 /* Start of Multiple Cards*/
 
-.inventoryHeader {
-	display: flex;
-	justify-content: center;
-}
-
 .bannerInner {
 	flex-direction: column;
 	display: flex;
@@ -351,4 +359,29 @@ button:active {
 	.navHeadline h1 {
 		font-size: 3em;
 	}
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width:600px) {
+	.onepokemoncard{
+		width: 375px;
+	}
+	.pokecardcolumn{
+		width: 150px;
+		height: 200px;
+	}
+	.pokecardtext{
+		width: 150px;
+	}
+
+	
+}
+@media only screen and (max-width: 750px) {
+
+  .navHeadline h1 {
+    font-size: 3em;
+  }
 }

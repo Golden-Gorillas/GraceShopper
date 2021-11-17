@@ -81,17 +81,18 @@ class Checkout extends Component {
 		console.log('checkout cart', cart);
 
 		return (
-			<div>
-				<div>
-					<h1>Checkout</h1>
+			<div className="CheckoutBody">
+				<div className="checkoutPrice">
+					<h1 >Checkout</h1>
 					<br />
-					<h3>Customer Info</h3>
-					<h3>Price : {this.state.total}</h3>
-					<h4>Total : </h4>
+					
+					<h3 id="price">Price : $ {this.state.total}</h3>
+					{/* <h4>Total : </h4> */}
 					{cart.cards && this.state.total === 0 ? reRender('Total') : null}
 				</div>
 
-				<div>
+				<div className="customerContainerInfo">
+					<h3>Customer Info</h3>
 					<form id='customerInfo' onSubmit={handleSubmit}>
 						<div className='ContainerCustomerInfo'>
 							<div className='CustomerFName'>
@@ -171,8 +172,7 @@ class Checkout extends Component {
 							)}
 						</div>
 					</form>
-					<div>
-						<h3>Payment</h3>
+					<div className="PayWithCard">
 						{console.log(this.props)}
 						{this.state.re ? (
 							<StripeContainer price={this.state.total} email={email}product={cart} />
