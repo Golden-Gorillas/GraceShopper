@@ -5,63 +5,63 @@ font-family: 'Roboto Condensed', sans-serif;
 font-family: 'Roboto Slab', serif; */
 
 body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  /* background-image: url('https://st2.depositphotos.com//8047136/11779/v/450/depositphotos_117792506-stock-illustration-game-balls-seamless-pattern.jpg'); */
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.4),
-      rgba(255, 255, 255, 0.7)
-    ),
-    url('https://st2.depositphotos.com//8047136/11779/v/450/depositphotos_117792506-stock-illustration-game-balls-seamless-pattern.jpg');
-  background-color: rgba(255, 255, 255, 0.7);
-  background-blend-mode: darken;
-  background-repeat: repeat;
-  background-attachment: fixed;
-  /* justify-content: center;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	/* background-image: url('https://st2.depositphotos.com//8047136/11779/v/450/depositphotos_117792506-stock-illustration-game-balls-seamless-pattern.jpg'); */
+	background-image: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.4),
+			rgba(255, 255, 255, 0.7)
+		),
+		url('https://st2.depositphotos.com//8047136/11779/v/450/depositphotos_117792506-stock-illustration-game-balls-seamless-pattern.jpg');
+	background-color: rgba(255, 255, 255, 0.7);
+	background-blend-mode: darken;
+	background-repeat: repeat;
+	background-attachment: fixed;
+	/* justify-content: center;
   align-items: center; */
-  /* background-color: #FFED4A; */
+	/* background-color: #FFED4A; */
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 label {
-  display: block;
+	display: block;
 }
 
 /* nav styling */
 
 nav a {
-  display: flex;
-  margin: 1em;
-  color: white;
-  font-family: 'Nunito', sans-serif;
+	display: flex;
+	margin: 1em;
+	color: white;
+	font-family: 'Nunito', sans-serif;
 }
 
 form div {
-  margin: 1em;
-  display: inline-block;
+	margin: 1em;
+	display: inline-block;
 }
 
 .navHeadline {
-  font-family: 'Roboto Condensed', sans-serif;
-  text-align: center;
-  color: white;
-  background-color: #1e2c5e;
-  padding: 0;
-  margin: 0;
-  width: 100vw;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+	color: white;
+	background-color: #1e2c5e;
+	padding: 0;
+	margin: 0;
+	width: 100vw;
 }
 
 .navHeadline h1 {
-  color: #ffcb05;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 5em;
-  padding: 0;
-  margin: 0;
+	color: #ffcb05;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 5em;
+	padding: 0;
+	margin: 0;
 }
 
 /* .cardsContainer {
@@ -90,14 +90,14 @@ form div {
 } */
 
 .banner {
-  color: black;
-  background: top left/cover no-repeat;
-  height: 20vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	color: black;
+	background: top left/cover no-repeat;
+	height: 20vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /* .flexWrapper {
@@ -107,23 +107,23 @@ form div {
 } */
 
 .banner h1 {
-  margin: 0;
-  text-align: center;
-  background-color: white;
-  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
-  font-size: 3em;
-  font-family: 'Roboto Condensed', sans-serif;
-  border-radius: 20px;
+	margin: 0;
+	text-align: center;
+	background-color: white;
+	box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+	font-size: 3em;
+	font-family: 'Roboto Condensed', sans-serif;
+	border-radius: 20px;
 }
 
 .banner2 {
-  color: black;
-  height: 20vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	color: black;
+	height: 20vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .featuredCardsContainer {
@@ -137,12 +137,12 @@ form div {
 }
 
 .cardCard {
-  border-style: solid;
-  border-width: 1.5em;
-  border-color: white;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+	border-style: solid;
+	border-width: 1.5em;
+	border-color: white;
+	border-radius: 20px;
+	background-color: white;
+	box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .cardCard img {
@@ -157,195 +157,198 @@ form div {
   transform: scale(1.05);
 }
 .cardDetails {
-  background-color: white;
-  color: black;
-  padding: 0;
-  margin: 0;
-  font-size: 1em;
-  font-family: 'Nunito', sans-serif;
+	background-color: white;
+	color: black;
+	padding: 0;
+	margin: 0;
+	font-size: 1em;
+	font-family: 'Nunito', sans-serif;
 }
 
 /* START OF SINGLE CARD*/
 
 .singlecontainer {
-  display: flex;
-  flex-direction: column;
-  background-color: burlywood;
-  border-radius: 5% 10%;
-  padding: 5px;
-  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-  border: 5px solid white;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	background-color: burlywood;
+	border-radius: 5% 10%;
+	padding: 5px;
+	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+	border: 5px solid white;
+	justify-content: center;
 }
 .singlecardTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 #singlecardname {
-  color: white;
-  padding-right: 5px;
-  text-shadow: 2px 2px 4px black;
+	color: white;
+	padding-right: 5px;
+	text-shadow: 2px 2px 4px black;
 }
 .onepokemoncard {
-  width: 700px;
-  border: 5px solid white;
-  padding: 5px;
-  padding-bottom: 25px;
-  display: flex;
-  justify-content: space-between;
+	width: 700px;
+	border: 5px solid white;
+	padding: 5px;
+	padding-bottom: 25px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .cardpic {
-  display: flex;
-  width: 50%;
+	display: flex;
+	width: 50%;
 }
 
 .pokecardcolumn {
-  border: 1px solid black;
-  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
-  border-radius: 10px;
-  width: 300px;
-  height: 400px;
-  float: left;
+	border: 1px solid black;
+	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+	border-radius: 10px;
+	width: 300px;
+	height: 400px;
+	float: left;
 }
 
 .pokecardtext {
-  padding: 10px;
-  display: flex;
-  width: 50%;
-  justify-content: center;
+	padding: 10px;
+	display: flex;
+	width: 50%;
+	justify-content: center;
 }
 
 .buyContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #stock {
-  color: green;
+	color: green;
 }
 
 .price {
-  color: green;
-  padding: 5px;
-  border: 5px;
+	color: green;
+	padding: 5px;
+	border: 5px;
 }
 .buyadd {
-  width: 100px;
-  height: 40px;
-  border-radius: 10px;
-  border-color: whitesmoke;
-  border: 10px;
-  box-shadow: 2px 2px rgb(252, 252, 252);
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	border-color: whitesmoke;
+	border: 10px;
+	box-shadow: 2px 2px rgb(252, 252, 252);
 }
 
 button:hover {
-  background-color: rgb(0, 255, 81);
-  box-shadow: 0 0 20px rgb(147, 248, 198);
+	background-color: rgb(0, 255, 81);
+	box-shadow: 0 0 20px rgb(147, 248, 198);
 }
 
 button:active {
-  background-color: rgb(0, 255, 81);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+	background-color: rgb(0, 255, 81);
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
 
 .buttonMain {
-  margin-bottom: 25px;
+	margin-bottom: 25px;
 }
 #cardname {
-  color: Green;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin-bottom: 2px;
+	color: Green;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	margin-bottom: 2px;
 }
 #cardname:hover {
-  text-shadow: 4px 4px 8px green;
-  color: black;
+	text-shadow: 4px 4px 8px green;
+	color: black;
 }
 
 .namelink {
-  display: flex;
-  text-align: center;
-  justify-content: center;
+	display: flex;
+	text-align: center;
+	justify-content: center;
 }
 /* Start of Multiple Cards*/
 
 .inventoryHeader {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .bannerInner {
-  flex-direction: column;
-  display: flex;
-  width: 100%;
-  height: 220px;
-  justify-content: center;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.9);
-  position: relative;
-  top: -10px;
+	flex-direction: column;
+	display: flex;
+	width: 100%;
+	height: 220px;
+	justify-content: center;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.9);
+	position: relative;
+	top: -10px;
 }
 
 .filterHeader {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  font-size: 20px;
-  justify-content: space-evenly;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	font-size: 20px;
+	justify-content: space-evenly;
 }
 
 .cardsContainer {
-  width: 80vw;
-  /* box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray; */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  /* background-color: blue; */
+	width: 80vw;
+	/* box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray; */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	/* background-color: blue; */
 }
 .singleRowContainer {
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px 2px white;
-  margin: 25px;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.95);
-  width: 20vw;
-  min-width: 350px;
-  border: solid black 2px;
-  transition: 0.5s;
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 2px white;
+	margin: 25px;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.95);
+	width: 20vw;
+	min-width: 350px;
+	border: solid black 2px;
+	transition: 0.5s;
 }
 
 .singleRowContainer:hover {
-  box-shadow: 12px 0 15px -4px rgb(28, 28, 158),
-    -12px 0 8px -4px rgb(28, 28, 158);
-  transform: scale(1.05);
+	box-shadow: 12px 0 15px -4px rgb(28, 28, 158),
+		-12px 0 8px -4px rgb(28, 28, 158);
+	transform: scale(1.05);
 }
 
 .card {
-  border-radius: 10px;
-  width: 300px;
-  height: 400px;
-  padding: 1px;
-  box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
+	border-radius: 10px;
+	width: 300px;
+	height: 400px;
+	padding: 1px;
+	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
 }
 
 .mainContainer {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
+.yourCart {
+	background: #fff;
+}
 @media only screen and (max-width: 750px) {
-  .navHeadline h1 {
-    font-size: 3em;
-  }
+	.navHeadline h1 {
+		font-size: 3em;
+	}
 }
