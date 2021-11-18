@@ -92,6 +92,7 @@ export class UserCart extends React.Component {
 													/>
 
 													<button
+														className='buyadd'
 														type='submit'
 														onClick={(event) => {
 															event.preventDefault();
@@ -113,6 +114,7 @@ export class UserCart extends React.Component {
 												</form>
 												<br />
 												<button
+													className='buyadd'
 													onClick={() =>
 														!this.props.id.id
 															? deleteCard('', card.id)
@@ -161,7 +163,9 @@ export class UserCart extends React.Component {
 							total: () =>
 								cart.cards.map((card) => card.price).reduce((a, b) => a + b),
 						}}>
-						<button type='button'>CHECKOUT</button>
+						<button type='button' className='buyadd'>
+							CHECKOUT
+						</button>
 					</Link>
 				</div>
 			</div>

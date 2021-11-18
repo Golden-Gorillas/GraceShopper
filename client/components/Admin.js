@@ -30,10 +30,14 @@ class Admin extends Component {
 						<h2>What would you like to view?</h2>
 					</div>
 					<div className='headerButtons'>
-						<button onClick={() => this.setState({ activeView: 'Cards' })}>
+						<button
+							className='buyadd'
+							onClick={() => this.setState({ activeView: 'Cards' })}>
 							Pokemon Inventory
 						</button>{' '}
-						<button onClick={() => this.setState({ activeView: 'Users' })}>
+						<button
+							className='buyadd'
+							onClick={() => this.setState({ activeView: 'Users' })}>
 							All Users
 						</button>
 					</div>
