@@ -6,6 +6,7 @@ const User = require('./models/User');
 const Card = require('./models/Card');
 const Cart = require('./models/Cart');
 const CardsInCart = require('./models/CardsInCart');
+const OrderHistory = require('./models/UserOrderHistory')
 
 //associations could go here!
 Cart.belongsTo(User);
@@ -20,5 +21,6 @@ module.exports = {
 		Card,
 		Cart,
 		CardsInCart,
+		OrderHistory,
 	},
 };

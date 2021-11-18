@@ -38,6 +38,7 @@ class SingleCardView extends Component {
           </div>
         </div>
         <div className="buyContainer">
+          <div className="instockSp">inStock: {stock}</div>
           <h2>$</h2>
           <h1 className="price">{price}</h1>
           <button

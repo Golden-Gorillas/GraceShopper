@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const db = require('..db')
+const db = require('../db')
 
 
 const OrderHistory = db.define('Order',{
@@ -17,15 +17,12 @@ const OrderHistory = db.define('Order',{
         allowNull:false
     },
     Ordertotal:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull:false
     },
     paymentOption:{
         type: Sequelize.STRING,
         allowNull:false,
-        validate:{
-            isCreditCard: true
-        }
     },
     
 })

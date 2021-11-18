@@ -6,7 +6,8 @@ import { logout } from '../store';
 export const Navbar = ({ handleClick, isLoggedIn, userEmail, user }) => {
 	return (
 		<div className='navHeadline'>
-			<h1 className='navText'>Golden Gorillas Pokemon Card Store</h1>
+			<h1 className='navText'>Golden Gorillas Pokemon Card Store
+			<img id="GGLogo" src="GoldenGorLOGO.png"/></h1>
 			<nav>
 				{!user ? (
 					<div className='navList'>
