@@ -7,12 +7,15 @@ export default class Thankyou extends Component{
     render(){
         const {email} = this.props
         return(
-        <div>
-            <h1> Thank You For Your Purchase </h1>
-            <img src="GoldenGorLOGO.png" />
+        <div className="ThankyouContainer">
+            <h1 className="titleThankyou"> Thank You For Your Purchase </h1>
+            <div >
+                <img id="GGLogoTy" src="GoldenGorLOGO.png" />
+            </div>
 
         </div>
         )
     }
 
 }
+// class="animate__animated animate__bounce" 

@@ -186,6 +186,7 @@ form div {
   box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
   border: 5px solid white;
   justify-content: center;
+  align-items: center;
   max-width:750px;
   margin: auto;
   position: relative;
@@ -206,12 +207,14 @@ form div {
 	padding: 5px;
 	padding-bottom: 25px;
 	display: flex;
+	margin:auto;
 	justify-content: space-between;
 }
 
 .cardpic {
 	display: flex;
 	width: 50%;
+	
 }
 
 .pokecardcolumn {
@@ -244,6 +247,9 @@ form div {
 	color: green;
 	padding: 5px;
 	border: 5px;
+}
+.instockSp{
+	padding: 15px
 }
 .buyadd {
 	width: 100px;
@@ -346,6 +352,43 @@ button:active {
 	padding: 1px;
 	box-shadow: 12px 0 15px -4px gray, -12px 0 8px -4px gray;
 }
+#GGLogo{
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	animation: bounce;
+	animation-duration:2s ;
+	opacity: 100%;
+  }
+  .animate__animated.animated__bounce{
+	  --animate-duration:2s ;
+  }
+  #GGLogoTy{
+	height: 300px;
+	width: 300px;
+
+	animation: bounce;
+	animation-duration:2s ;
+	opacity: 100%;
+  }  
+.ThankyouContainer{
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	flex-direction: column;
+	margin: auto;
+	border-radius: 5% 10%;
+	border: 2px solid purple;
+	background: rgba(243, 240, 243, 0.7);
+	max-width: 750px;
+} 
+.titleThankyou{
+	border-radius: 5% 10%;
+	color: whitesmoke;
+	text-shadow: 4px 4px 8px black;
+}
 
 .mainContainer {
 	display: flex;
@@ -359,11 +402,6 @@ button:active {
 	.navHeadline h1 {
 		font-size: 3em;
 	}
-}
-
-.mainContainer {
-  display: flex;
-  justify-content: center;
 }
 @media only screen and (max-width:600px) {
 	.onepokemoncard{

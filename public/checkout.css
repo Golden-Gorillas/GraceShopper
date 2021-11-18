@@ -3,6 +3,9 @@
   background-color: whitesmoke;
   border:2px solid black;
   display: flex;
+  margin: auto;
+  position: relative;
+  max-width: 1150px;
 
 }
 
@@ -91,7 +94,6 @@
   flex-direction: column;
 
 }
-
 @media only screen and (max-width: 600px) {
   .ContainerCustomerInfo{flex-direction: column;}
   .ContainerShippingInfo{flex-direction: column;}

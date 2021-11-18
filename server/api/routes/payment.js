@@ -1,7 +1,9 @@
 require("dotenv").config();
 const cors = require("cors");
 const router = require("express").Router();
-
+const {
+	models: { OrderHistory },
+} = require('../../db');
 const Stripe = require("stripe");
 const stripe = new Stripe(process.env.STRIPE_SK);
 //universal unique identifier 
@@ -29,7 +31,15 @@ router.post("/checkout", async (req, res) => {
         const names = product.cards.map((card) => card.name).join("-/-");
         //make sure user is not charged twice
         const idempotencyKey = uuidv4();
-
+        
+        console.log('here:', token.price)
+        //create order history 
+        await OrderHistory.create({
+          User: token.email,
+          Ordernumber: idempotencyKey,
+          Ordertotal: price,
+          paymentOption: 'Visa'
+        })
         const charge = await stripe.charges.create(
           {
             amount: Math.round(price * 100),
